@@ -1,0 +1,45 @@
+
+#########################
+## iptables 방화벽 포트 ##
+#########################
+
+아래에서 필요한 port 만 확인하셔서 등록한뒤 사용하시면 됩니다.
+
+## iptables 방화벽 포트 오픈
+sudo iptables -I INPUT 5 -i ens3 -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -I INPUT 5 -i ens3 -p tcp --dport 443 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -I INPUT 5 -i ens3 -p tcp --dport 7777 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -I INPUT 5 -i ens3 -p tcp --dport 7778 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -I INPUT 5 -i ens3 -p tcp --dport 7001 -m state --state NEW,ESTABLISHED -j ACCEPT 
+sudo iptables -I INPUT 5 -i ens3 -p tcp --dport 7101 -m state --state NEW,ESTABLISHED -j ACCEPT 
+sudo iptables -I INPUT 5 -i ens3 -p tcp --dport 7201 -m state --state NEW,ESTABLISHED -j ACCEPT 
+
+## 방화벽 다운 및 재실행시 방화벽 다운
+방화벽 서비스 해제 명령어
+systemctl stop firewalld
+
+## 재부팅시 방화벽 실행하지 않기
+systemctl disable firewalld
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
