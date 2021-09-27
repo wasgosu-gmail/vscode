@@ -37,8 +37,7 @@ sudo iptables -I INPUT 5 -i ens3 -p tcp --dport 7778 -m state --state NEW,ESTABL
 sudo iptables -I INPUT 5 -i ens3 -p tcp --dport 7001 -m state --state NEW,ESTABLISHED -j ACCEPT 
 
 
-
-
+이현이 바보~~~
 
 
 
