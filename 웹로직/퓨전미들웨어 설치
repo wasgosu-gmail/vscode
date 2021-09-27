@@ -1,0 +1,60 @@
+
+
+- 퓨전미들웨어 wls, ohs 연결 구성
+https://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/12c/12_2_1/004-13-001-ohsCP/ohsCP.html
+
+
+
+## 퓨전미들웨어 설치 후 ohs, weblogic 연동
+###### 퓨전미들웨어 설치 진행 
+https://www.
+youtube.com/watch?v=7WZJ_frTwMM
+
+
+1. 퓨전미들웨어 설치 (ohs 노드 합치기)
+- fmw_12.2.1.4.0_infrastructure_Disk1_1of1.zip 다운로드 
+- 퓨전미들웨어 다운로드 
+https://www.oracle.com/middleware/technologies/fusionmiddleware-downloads.html
+
+- 퓨전미들웨어 설치 (스샷)
+./fmw_12.2.1.4.0_ohs_linux64.bin
+
+
+
+- 환경변수 설정 
+아래 경로로 이동https://1fichier.com/?mloco0kojgmx6e097lu0&af=2850246
+/home/weblogic/fmw-12/oracle_common/common/bin
+
+- QS_TEMPLATES 입력
+QS_TEMPLATES=/home/weblogic/fmw-12/wlserver/common/templates/wls/wls_jrf.jar
+
+-  ./qs_config.sh 실행 및 내보내기
+./qs_config.sh
+QS_TEMPLATES env variable not se
+
+- 내보내기
+export QS_TEMPLATES=/home/weblogic/fmw-12/wlserver/common/templates/wls/wls_jrf.jar
+
+- Quick start 실행 (스샷)
+./qs_config.sh
+
+- config.sh 실행
+./config.sh
+
+- fmw 내에 weblogic 실행..(ohs,wls모두 실행되서 느림)
+경로
+/home/weblogic/fmw-12/user_projects/domains/base_domain/bin
+파일
+./startWebLogic.sh &
+./startNodeManager.sh &
+
+
+
+
+
+
+
+
+
+
+

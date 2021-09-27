@@ -1,0 +1,59 @@
+
+## 오라클리눅스 vnc 설치 및 시작
+https://mangdan.github.io/wls-install-on-oci/
+
+1. vnc 설치
+opc 유저로 실행
+
+# yum install tigervnc-server -y
+
+2. vnc 패스워드 설정
+$ vncpasswd
+
+Password:
+Verify:
+Would you like to enter a view-only password (y/n)? n
+A view-only password is not use
+
+
+3. vnc 유저 변경을 위해 서비스 파일 복사
+$ sudo cp /lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@\:1.service
+
+4. 유저 opc로 변경
+$ sudo vi /etc/systemd/system/vncserver@\:1.service
+# Clean any existing files in /tmp/.X11-unix environment
+ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
+ExecStart=/usr/bin/vncserver_wrapper opc %i
+ExecStop=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
+
+
+5. vnc service 기동
+$ systemctl daemon-reload
+$ systemctl enable vncserver@:1.service
+$ systemctl start vncserver@:1.service
+$ systemctl status vncserver@:1.service
+
+
+6. vnc 기동 확인(5901 포트 및 vnc 프로세스 확인)
+[root@weblogic-test ~]# netstat -an|grep 5901
+tcp        0      0 0.0.0.0:5901            0.0.0.0:*               LISTEN
+tcp        0      0 10.0.0.229:5901         121.100.126.207:27379   ESTABLISHED
+tcp6       0      0 :::5901     
+
+[root@weblogic-test ~]# ps -ef|grep vnc
+root     13175     1  0 13:28 ?        00:00:00 /bin/sh /usr/bin/vncserver_wrapper opc :1
+opc      13199     1  0 13:28 ?        00:00:06 /usr/bin/Xvnc :1 -auth /home/opc/.Xauthority -desktop weblogic-test:1 (opc) -fp catalogue:/etc/X11/fontpath.d -geometry 1024x768 -pn -rfbauth /home/opc/.vnc/passwd -rfbport 5901 -rfbwait 30000
+opc      13208     1  0 13:28 ?        00:00:00 /bin/sh /home/opc/.vnc/xstartup
+root     22294 19887  0 13:52 pts/2    00:00:00 grep --color=auto vnc
+
+
+7. VNC viewer PC버전 설치
+https://www.realvnc.com/en/connect/download/viewer/
+윈도우, MAC 환경에 맞게 다운로드 
+
+
+
+
+
+
+

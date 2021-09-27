@@ -1,0 +1,78 @@
+-----------------------
+startWebLogic.sh
+-----------------------
+# WASGOSU
+#!/bin/sh
+SERVER_NAME=AdminServer
+DOMAIN_HOME=/home/weblogic/fmw-12/user_projects/domains/base_domain
+LOG_DIR=$DOMAIN_HOME/logs
+
+echo "username=weblogic
+password=password1" > $DOMAIN_HOME/servers/AdminServer/security/boot.properties
+find $DOMAIN_HOME -name boot*
+export JAVA_OPTIONS=-Djava.security.egd=file:/dev/./urandom
+
+nohup $DOMAIN_HOME/bin/startWebLogic.sh > $LOG_DIR/$SERVER_NAME.`date +%y%m%d`.log 2>&1 &
+
+
+-----------------------
+stopWebLogic.sh
+-----------------------
+# WASGOSU
+#!/bin/sh
+SERVER_NAME=AdminServer
+DOMAIN_HOME=/home/weblogic/fmw-12/user_projects/domains/base_domain
+LOG_DIR=$DOMAIN_HOME/logs
+
+nohup $DOMAIN_HOME/bin/stopWebLogic.sh > $LOG_DIR/$SERVER_NAME.stop.`date +%y%m%d`.log 2>&1
+echo STOP WebLogic OK~!!!
+
+
+
+-----------------------
+startNodeManager.sh
+-----------------------
+# WASGOSU
+#!/bin/sh
+SERVER_NAME=nodemanager01
+DOMAIN_HOME=/home/weblogic/fmw-12/user_projects/domains/base_domain
+LOG_DIR=$DOMAIN_HOME/logs
+export JAVA_OPTIONS=-Djava.security.egd=file:/dev/./urandom
+
+nohup $DOMAIN_HOME/bin/startNodeManager.sh $SERVER_NAME > $LOG_DIR/$SERVER_NAME.`date +%y%m%d`.log 2>&1 &
+
+
+
+-----------------------
+stopNodeManager.sh
+-----------------------
+# WASGOSU
+#!/bin/sh
+SERVER_NAME=nodemanager01
+DOMAIN_HOME=/home/weblogic/fmw-12/user_projects/domains/base_domain
+LOG_DIR=$DOMAIN_HOME/logs
+
+nohup $DOMAIN_HOME/bin/stopNodeManager.sh $SERVER_NAME > $LOG_DIR/$SERVER_NAME.stop.`date +%y%m%d`.log 2>&1
+echo STOP NodeManager OK~!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

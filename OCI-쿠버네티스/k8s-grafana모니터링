@@ -1,0 +1,109 @@
+
+
+# 헬름설치
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+helm version
+
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts/
+helm repo update
+
+helm search repo prometheus
+
+
+# helm 인스톨로 쿠버네티스에 배포
+helm install prometheus-community/kube-prometheus-stack --generate-name
+
+# 차트에 대한 배포가 끝나니 프로메테우스, 그라파나가 설치된 것을 확인
+kubectl get deploy,po,svc
+
+[opc@inst-public ~]$ kubectl get deploy,po,svc
+NAME                                                                  READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/kube-prometheus-stack-1629-operator                   1/1     1            1           28m
+deployment.apps/kube-prometheus-stack-1629700182-grafana              1/1     1            1           28m
+deployment.apps/kube-prometheus-stack-1629700182-kube-state-metrics   1/1     1            1           28m
+deployment.apps/nginx                                                 3/3     3            3           3h8m
+
+NAME                                                                  READY   STATUS    RESTARTS   AGE
+pod/alertmanager-kube-prometheus-stack-1629-alertmanager-0            2/2     Running   0          28m
+pod/kube-prometheus-stack-1629-operator-84f6854bff-6j78m              1/1     Running   0          28m
+pod/kube-prometheus-stack-1629700182-grafana-77944c547b-j7db8         2/2     Running   0          28m
+pod/kube-prometheus-stack-1629700182-kube-state-metrics-7b94c65fvm4   1/1     Running   0          28m
+pod/kube-prometheus-stack-1629700182-prometheus-node-exporter-7c82b   1/1     Running   0          28m
+pod/kube-prometheus-stack-1629700182-prometheus-node-exporter-qvqd8   1/1     Running   0          28m
+pod/kube-prometheus-stack-1629700182-prometheus-node-exporter-vmj7g   1/1     Running   0          28m
+pod/nginx-7848d4b86f-7hgnw                                            1/1     Running   0          3h1m
+pod/nginx-7848d4b86f-hczzk                                            1/1     Running   0          3h8m
+pod/nginx-7848d4b86f-kgcgf                                            1/1     Running   0          3h8m
+pod/prometheus-kube-prometheus-stack-1629-prometheus-0                2/2     Running   0          28m
+
+NAME                                                                TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)                      AGE
+service/alertmanager-operated                                       ClusterIP      None            <none>           9093/TCP,9094/TCP,9094/UDP   28m
+service/kube-prometheus-stack-1629-alertmanager                     ClusterIP      10.96.209.138   <none>           9093/TCP                     28m
+service/kube-prometheus-stack-1629-operator                         ClusterIP      10.96.76.65     <none>           443/TCP                      28m
+service/kube-prometheus-stack-1629-prometheus                       ClusterIP      10.96.13.232    <none>           9090/TCP                     28m
+service/kube-prometheus-stack-1629700182-grafana                    ClusterIP      10.96.141.132   <none>           80/TCP                       28m
+service/kube-prometheus-stack-1629700182-kube-state-metrics         ClusterIP      10.96.17.26     <none>           8080/TCP                     28m
+service/kube-prometheus-stack-1629700182-prometheus-node-exporter   ClusterIP      10.96.194.129   <none>           9100/TCP                     28m
+service/kubernetes                                                  ClusterIP      10.96.0.1       <none>           443/TCP                      2d21h
+service/nginx-service                                               LoadBalancer   10.96.191.198   146.56.169.236   8080:32590/TCP               166m
+service/prometheus-operated                                         ClusterIP      None            <none>           9090/TCP                     28m
+
+
+
+
+# grafana 서비스 매니페스트 파일을 열어 로드벨렁신으로 외부 연동하기
+kubectl edit svc  kube-prometheus-stack-1629700182-grafana
+
+- 아래 내용 수정 후 저장
+apiVersion: v1
+kind: Service
+metadata:
+  #annotations:
+    #meta.helm.sh/release-name: kube-prometheus-stack-1629700182
+    #meta.helm.sh/release-namespace: default
+  annotations:
+    service.beta.kubernetes.io/oci-load-balancer-backend-protocol: HTTP
+    service.beta.kubernetes.io/oci-load-balancer-shape: 100Mbps
+  creationTimestamp: "2021-08-23T06:30:20Z"
+  labels:
+    app.kubernetes.io/instance: kube-prometheus-stack-1629700182
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/version: 8.0.5
+    helm.sh/chart: grafana-6.14.2
+  name: kube-prometheus-stack-1629700182-grafana
+  namespace: default
+  resourceVersion: "759130"
+  uid: 0f7ccf76-15df-40ac-a0d6-ca1139e12895
+spec:
+  clusterIP: 10.96.141.132
+  clusterIPs:
+  - 10.96.141.132
+  ports:
+  - name: service
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app.kubernetes.io/instance: kube-prometheus-stack-1629700182
+    app.kubernetes.io/name: grafana
+  sessionAffinity: None
+  #type: ClusterIP
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+  
+
+# 그라파나 접속 패스워드 가져오기
+kubectl get services | grep grafana
+kubectl get secret kube-prometheus-stack-1629700182-grafana -o jsonpath="{.data.admin-password}"|base64
+
+- 패스워드 확인 
+prom-operator
+
+# 그라파나 대시보드 다운로드
+https://grafana.com/grafana/dashboards?search=kubernetes
+https://grafana.com/grafana/dashboards/13770
+

@@ -1,0 +1,55 @@
+
+
+
+## nginx 야믈생성 (nginx-pod.yaml) 
+- nginx-pod.yaml 생성
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+
+
+- nginx-deployment.yaml 실행
+kubectl apply -f nginx-pod.yaml 
+deployment.apps/nginx-deployment configured
+
+- get pod 포드 3개 생성 확인
+kubectl get pods -o wide
+nginx-deployment-66b6c48dd5-7x2pt   1/1     Running   0          46m
+nginx-deployment-66b6c48dd5-gh884   1/1     Running   0          46m
+nginx-deployment-66b6c48dd5-h257f   1/1     Running   0          22s
+
+
+-nginx.service 생성
+nginx-service로 등록 및 8080port를 80port로 로드벨런서 진행
+
+kubectl expose deployment nginx-deployment --port=8080 --target-port=80 --type=LoadBalancer --name=nginx-service
+
+- nginx 브라우저 호출하면 확인 가능
+http://152.70.94.74/
+
+
+- describe 명령으로 nginx-service 상세 정보 확인 (공인IP)
+OCI 퍼블릭 로드벨런서 등록 후 공인 IP 확인
+kubectl describe services nginx-service
+
+
+
+

@@ -1,0 +1,28 @@
+
+- 홍기현상무께 인수인계 자료
+https://stbeehive.oracle.com/teamcollab/library/st/wls1221_beta_internal_testers/Documents#dcid=334B%3A3BF0%3Aafrh%3A38893C00F42F38A1E0404498C8A6612B000B6C601633
+
+
+### us 붙는건 모두 VPN 연결후 접속 가능
+- cloud native쪽 confluence
+http://aseng-wiki.us.oracle.com/asengwiki/display/ASDevWLS/WebLogic+Server+Home
+
+- weblogic on kubernetes
+ http://aseng-wiki.us.oracle.com/asengwiki/display/ASDevWLS/WebLogic+on+Kubernetes
+ https://blogs.oracle.com/weblogicserver/running-weblogic-on-openshift
+
+
+- 베타버전 미리 다운로드 받는곳
+ https://confluence.oraclecorp.com/confluence/display/enterprisecloudnativejava
+
+
+- CNCF 공부할때 도움 
+여기에 helidon도 있어요. guide하고 lab등
+https://www.oracle.com/webfolder/s/assets/microsite/cloud-native/index.html
+
+
+- 많은 영업들과 사람들이 물어보는 certification matrix
+- weblogic server cetification matrix
+https://www.oracle.com/middleware/technologies/fusion-certification.html
+
+

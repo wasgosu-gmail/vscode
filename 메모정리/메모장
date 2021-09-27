@@ -1,0 +1,55 @@
+-------------------------------------------
+# 7장 weblogic cluster 구성
+# 8장 weblogic session cluster 구성 테스트
+# 9장 weblogic db 연동 테스트 
+-------------------------------------------
+
+# 8장 weblogic cluster 구성
+
+- 링크 참고, 내용은 스샷
+https://linux.systemv.pe.kr/weblogic-11g-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0-%EC%84%A4%EC%A0%95/
+
+
+- 세션 공유시 필요
+weblogic.xml 내용 추가 
+
+<?xml version='1.0' encoding='UTF-8'?>
+<weblogic-web-app xmlns="http://www.bea.com/ns/weblogic/90" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 
+<!-- Insert session descriptor element here -->
+        <context-root>/shoppingcart</context-root>
+ 
+        <session-descriptor>
+                <persistent-store-type>replicated_if_clustered</persistent-store-type>
+                <cookie-path>/</cookie-path>
+                <sharing-enabled>true</sharing-enabled>
+          </session-descriptor>
+</weblogic-web-app>
+
+
+
+
+sudo iptables -I INPUT 5 -i ens3 -p tcp --dport 7101 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -I INPUT 5 -i ens3 -p tcp --dport 7202 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -I INPUT 5 -i ens3 -p tcp --dport 7777 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -I INPUT 5 -i ens3 -p tcp --dport 7778 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -I INPUT 5 -i ens3 -p tcp --dport 7001 -m state --state NEW,ESTABLISHED -j ACCEPT 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
