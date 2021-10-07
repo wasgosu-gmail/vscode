@@ -1,0 +1,303 @@
+
+## weblogic Image Tool 다운로드 
+docker 이미지 생성 
+
+1. 다운로드
+https://github.com/oracle/weblogic-image-tool
+
+
+2. 설치 가이드 
+https://oracle.github.io/weblogic-image-tool/quickstart/setup/
+
+
+3. mvn 설치
+mvn 설치 
+
+
+4. 파일 다운로드 (첨부파일)
+파일 다운로드 후 서버 업로드 (리눅스용 다운)
+weblogic-image-tool-main.zip
+
+
+### weblogic Image Tool 설치 단계
+1. 빌드 실행 (package, clean, mvn clean package)
+- 압축해제
+unzip weblogic-image-tool-main.zip
+
+- mvn package 실행
+mvn package weblogic-image-tool-main
+빌드 성공 (스샷)
+
+- 빌드성공하면 아래처럼 /tests/target 디렉토리 생성
+[weblogic@weblogic-test weblogic-image-tool-main]$ cd tests/
+[weblogic@weblogic-test tests]$ ll
+total 12
+-rw-rw-r--. 1 weblogic weblogic 6099 Oct  1 05:37 pom.xml
+drwxrwxr-x. 3 weblogic weblogic   18 Oct  1 05:37 src
+drwxrwxr-x. 5 weblogic weblogic 4096 Oct  7 20:45 target
+
+
+- mvn clean 실행
+mvn clean
+빌드 성공 (스샷)
+
+- mvn clean package 실행
+[weblogic@weblogic-test weblogic-image-tool-main]$ ll
+total 56
+drwxrwxr-x. 4 weblogic weblogic    46 Oct  7 21:44 build-tools
+-rw-rw-r--. 1 weblogic weblogic  2126 Oct  1 05:37 CONTRIBUTING.md
+drwxrwxr-x. 3 weblogic weblogic    35 Oct  1 05:37 documentation
+drwxrwxr-x. 4 weblogic weblogic    46 Oct  7 21:44 imagetool
+drwxrwxr-x. 4 weblogic weblogic    46 Oct  7 21:44 installer
+-rw-rw-r--. 1 weblogic weblogic  3910 Oct  1 05:37 Jenkinsfile
+-rw-rw-r--. 1 weblogic weblogic  1839 Oct  1 05:37 LICENSE.txt
+-rw-rw-r--. 1 weblogic weblogic 13005 Oct  1 05:37 pom.xml
+-rw-rw-r--. 1 weblogic weblogic  2901 Oct  1 05:37 README.md
+-rw-rw-r--. 1 weblogic weblogic  1933 Oct  1 05:37 SECURITY.md
+drwxrwxr-x. 4 weblogic weblogic    46 Oct  7 21:44 tests
+-rw-rw-r--. 1 weblogic weblogic 16564 Oct  1 05:37 THIRD_PARTY_LICENSES.txt
+
+
+2. imagetool.zip 압축해제
+- imagetool 디렉토리 들어가서 imagetool.zip 압축 해제
+[weblogic@weblogic-test target]$ unzip imagetool.zip
+Archive:  imagetool.zip
+   creating: imagetool/
+   creating: imagetool/bin/
+  inflating: imagetool/bin/imagetool.cmd
+  inflating: imagetool/bin/imagetool.sh
+  inflating: imagetool/bin/logging.properties
+  inflating: imagetool/bin/setup.sh
+  inflating: imagetool/LICENSE.txt
+   creating: imagetool/lib/
+  inflating: imagetool/lib/imagetool.jar
+  inflating: imagetool/lib/imagetool_completion.sh
+  inflating: imagetool/VERSION.txt
+  inflating: imagetool/lib/fluent-hc-4.5.12.jar
+  inflating: imagetool/lib/httpclient-4.5.12.jar
+  inflating: imagetool/lib/httpcore-4.4.13.jar
+  inflating: imagetool/lib/commons-logging-1.2.jar
+  inflating: imagetool/lib/commons-codec-1.11.jar
+  inflating: imagetool/lib/httpmime-4.5.12.jar
+  inflating: imagetool/lib/picocli-4.3.2.jar
+  inflating: imagetool/lib/json-20200518.jar
+  inflating: imagetool/lib/compiler-0.9.10.jar
+
+
+3. source setup.sh 실행 (imagetool.sh 실행)
+- 압축 해제후 /bin 폴더 들어가면 아래와 같은 imagetool.sh, setup.sh 파일 확인
+[weblogic@weblogic-test bin]$ pwd
+/home/weblogic/weblogic-image-tool-main/installer/target/imagetool/bin
+
+[weblogic@weblogic-test bin]$ ll
+total 16
+-rwxr-x---. 1 weblogic weblogic  972 Oct  7 21:44 imagetool.cmd
+-rwxr-x---. 1 weblogic weblogic 1121 Oct  7 21:44 imagetool.sh
+-rwxr-x---. 1 weblogic weblogic 1132 Oct  7 21:44 logging.properties
+-rwxr-x---. 1 weblogic weblogic 1216 Oct  7 21:44 setup.sh
+
+- source setup.sh 실행 (java 환경변수 설정)
+Please set the JAVA_HOME environment variable to match the location of your Java installation. Java 8 or newer is required
+
+
+4. JAVA 환경변수를 .bash_profile 등록
+export JAVA_HOME=/usr
+PATH=$PATH:$HOME/.local/bin:$HOME/bin:$MAVEN_HOME/bin:$JAVA_HOME/bin
+
+- source setup.sh 실행
+- imagetool.sh 실행 (스샷 참고)
+[weblogic@weblogic-test bin]$ ./setup.sh
+[weblogic@weblogic-test bin]$ ./imagetool.sh
+Missing required subcommand
+Usage: imagetool [OPTIONS] [COMMAND]
+
+A tool to build docker images of WebLogic with selected patches and/or psu(s) applied.
+
+  -h, --help      Show this help message and exit.
+  -V, --version   Print version information and exit.
+
+Commands:
+
+Choose from:
+  cache    List and set cache options
+  create   Build WebLogic docker image
+  update   Update an existing docker image that was previously created with the image tool
+  rebase   Copy domain from one image to another
+  inspect  Inspect an image created by this tool
+  help     Displays help information about the specified command
+
+
+### imagetool 명령어로 이미지 생성
+1. java, weblogic 다운로드
+설치 프로그램을 다운로드 한뒤 원하는 경로에 저장해둔다
+
+경로 : /home/weblogic/install
+[weblogic@weblogic-test install]$ ll
+total 5867356
+-rw-rw-r--. 1 weblogic weblogic 1635717400 Sep  1 19:59 fmw_12.2.1.4.0_infrastructure_Disk1_1of1.zip
+
+145520298 Oct  7 23:10 jdk-8u301-linux-x64.tar.gz
+
+
+
+2. 캐시툴 사용 (Cache Tool to add the installers)
+위에 저장했던 경로와 파일명을 입력해줍니다.
+
+- imagetool 명령어
+imagetool cache addInstaller --type jdk --version 8u202 --path /home/weblogic/install/jdk-8-linux-x64.tar.gz
+imagetool cache addInstaller --type wls --version 12.2.1.3.0 --path /home/weblogic/install/fmw_12.2.1.4.0_infrastructure_Disk1_1of1.zip
+
+- 실행 (Successfully added to cache)
+[weblogic@weblogic-test bin]$ imagetool cache addInstaller --type jdk --version 8u202 --path /home/weblogic/install/jdk-8-linux-x64.tar.gz
+[INFO   ] Successfully added to cache. jdk_8u202=/home/weblogic/install/jdk-8-linux-x64.tar.gz
+[weblogic@weblogic-test bin]$ imagetool cache addInstaller --type wls --version 12.2.1.3.0 --path /home/weblogic/install/fmw_14.1.1.0.0_wls_lite_generic.jar
+[INFO   ] Successfully added to cache. wls_12.2.1.3.0=/home/weblogic/install/fmw_14.1.1.0.0_wls_lite_generic.jar
+[weblogic@weblogic-test bin]$
+
+
+3. 캐시 항목 확인 (imagetool cache listItems)
+[weblogic@weblogic-test bin]$ imagetool cache listItems
+Cache contents
+cache.dir=/home/weblogic/cache
+jdk_8u202=/home/weblogic/install/jdk-8-linux-x64.tar.gz
+wls_12.2.1.3.0=/home/weblogic/install/fmw_12.2.1.4.0_infrastructure_Disk1_1of1.zip
+
+
+4. docker 설치 및 실행
+docker 사전 설치되있어야 합니다.
+설치는 아래 내용 참고
+
+- docker 설치
+sudo yum install docker 
+sudo yum install docker-registry
+
+- docker 자동실행 등록
+sudo systemctl enable docker.service
+Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
+
+- docker 실행
+sudo systemctl start docker.service
+
+- docker 기동 확인
+sudo systemctl status docker.service
+
+● docker.service - Docker Application Container Engine
+   Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; vendor preset: disabled)
+   Active: active (running) since Thu 2021-10-07 22:41:47 KST; 11s ago
+     Docs: https://docs.docker.com
+ Main PID: 22950 (dockerd)
+    Tasks: 7
+   Memory: 31.6M
+   CGroup: /system.slice/docker.service
+           └─22950 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+Oct 07 22:41:47 weblogic-test dockerd[22950]: time="2021-10-07T22:41:47.553331179+09:00" level=warning msg="Your k...ight"
+... (생략)
+
+- docker 권한 부여 (chmod 666 docker.sock)
+sudo chmod 666 /var/run/docker.sock
+
+
+
+5. imagetool create 실행
+(주의사항)
+- tag 는 소문자만 허용
+- 이미지 파일들은 gzip 형식만 허용
+./imagetool.sh create --tag wls:12.2.1.4.0
+
+
+- 이미지 생성 성공 로그 
+[weblogic@weblogic-test bin]$ ./imagetool.sh create --tag wls:12.2.1.4.0
+[INFO   ] WebLogic Image Tool version 1.9.18-SNAPSHOT
+[INFO   ] Image Tool build ID: 9b35f69a-07e2-47f7-a056-716a533f8688
+[INFO   ] Temporary directory used for image build context: /home/weblogic/wlsimgbuilder_temp7101553687459268061
+[INFO   ] Copying /home/weblogic/install/jdk-8-linux-x64.tar.gz to build context folder.
+[INFO   ] Using middleware installers (wls) version 12.2.1.3.0
+[INFO   ] Copying /home/weblogic/install/fmw_12.2.1.4.0_infrastructure_Disk1_1of1.zip to build context folder.
+[INFO   ] Starting build: docker build --no-cache --force-rm --tag wls:12.2.1.4.0 /home/weblogic/wlsimgbuilder_temp7101553687459268061
+Sending build context to Docker daemon  1.781GB
+...
+... (생략)
+Step 25/27 : COPY --from=wls_build --chown=oracle:oracle /u01/oracle /u01/oracle/
+ ---> 2b9cfb68168d
+Step 26/27 : USER oracle
+ ---> Running in 125b116c19ab
+Removing intermediate container 125b116c19ab
+ ---> 34c007e239c9
+Step 27/27 : WORKDIR /u01/oracle
+ ---> Running in b596c17a5bc5
+Removing intermediate container b596c17a5bc5
+ ---> 630e8dbbcc27
+Successfully built 630e8dbbcc27
+Successfully tagged wls:12.2.1.4.0
+[INFO   ] Build successful. Build time=539s. Image tag=wls:12.2.1.4.0
+
+
+
+6. Docker image 생성 확인
+[weblogic@weblogic-test ~]$ docker images
+REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
+wls                          12.2.1.4.0          630e8dbbcc27        11 minutes ago      2.51GB
+ghcr.io/oracle/oraclelinux   7-slim              02b527a2b956        7 days ago          132MB
+
+
+7. Docker image export (파일로 내보내기)
+
+- docker image 확인
+[weblogic@weblogic-test ~]$ docker images
+REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
+wls                          12.2.1.4.0          630e8dbbcc27        15 minutes ago      2.51GB
+ghcr.io/oracle/oraclelinux   7-slim              02b527a2b956        7 days ago          132MB
+
+- docker image 내보내기 (docker-image-wls-12.2.1.4.tar)
+[weblogic@weblogic-test ~]$ docker save -o docker-image-wls-12.2.1.4.tar wls
+
+[weblogic@weblogic-test ~]$ pwd
+/home/weblogic
+[weblogic@weblogic-test ~]$ ll
+total 2479284
+drwxr-x---.  2 weblogic weblogic         23 Oct  7 22:33 cache
+-rw-------.  1 weblogic weblogic 2535333376 Oct  7 23:42 docker-image-wls-12.2.1.4.tar
+drwxr-xr-x.  2 weblogic weblogic       4096 Oct  7 23:13 install
+drwxrwxr-x. 10 weblogic weblogic       4096 Oct  1 05:37 weblogic-image-tool-main
+drwx------.  2 weblogic weblogic         76 Oct  7 23:29 wlsimgbuilder_temp4185299864456630198
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
