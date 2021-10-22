@@ -1,0 +1,546 @@
+
+oci foundations 2021 associate
+# 자격증 시험 문제 
+
+
+# 55. Which statement correctly describes Oracle Cloud Manageability SLA? 
+Services are in operation with uptime and connectivity requirements.
+Access to the console is guaranteed.
+100% availability to manage resources.
+Services consistently perform as expected.
+>> Ability to manage, monitor, and modify OCI resources.
+
+
+# 54. Which TWO statements correctly describe Oracle Cloud Infrastructure Service Level Agreements? 
+(정답 모두 선택)
+Financially backed commitment to provide a minimum level of service to customers.
+>> Financially backed commitment to provide a maximum level of service to customers.
+Defined as a number of eights for a week and a percentage credit.
+Defined as a number of eights for a month and a percentage credit.
+Defined as a number of nines for a week and a percentage credit.
+>> Defined as a number of nines for a month and a percentage credit.
+
+
+# Which Oracle Cloud Infrastructure (OCI) service is NOT available as part of Oracle Cloud Free Tier? 
+>> Exadata DB Systems
+Compute
+Autonomous Data Warehouse
+Monitoring
+
+
+# Which Oracle Cloud Infrastructure (OCI) capability allows you to set up alerts to notify you if a budget forecast is to be exceeded or spending surpasses a certain amount? 
+Events
+>> Budget
+Monitoring
+Cost Analysis
+
+
+# Which pricing model is NOT supported by Oracle Cloud Infrastructure (OCI)? 
+>> Weekly Universal Credits
+Monthly Universal Credits
+Pay-As-You-Go (PAYG)
+Annual Universal Credits
+Bring Your Own License (BYOL)
+
+
+# Which capability enables you to search, purchase, and start using software in your Oracle Cloud Infrastructure (OCI) tenancy? 
+>> Marketplace
+Resource Manager
+Container Registry
+OS Management
+
+
+# Which TWO are valid targets for setting Oracle Cloud Infrastructure (OCI) budgets?
+(정답 모두 선택)
+IAM group
+>> Compartment
+Budget tag
+Tenancy
+>> Cost-tracking tag
+
+
+# Which is a valid syntax for an Oracle Cloud Infrastructure (OCI) Identity and Access Management (IAM) Policy? 
+Deny user <user_name> to <verb> <resource-type> in tenancy
+>> Allow group <group_name> to <verb> <resource-type> in tenancy
+Deny group <group_name> to <verb> <resource-type> in tenancy
+Allow user <user_name> to <verb> <resource-type> in tenancy
+
+
+# Which TWO features can be used to manage cost in an Oracle Cloud Infrastructure (OCI) tenancy?
+(정답 모두 선택)
+Service Logs
+Account Controller
+>> Compartment Quotas
+>> Budgets
+Health Checks
+
+
+# 46.Which feature of Oracle Cloud Infrastructure (OCI) Identity and Access Management (IAM) service specifies authorization for various actions for authenticated Principals? 
+>> Policy
+Compartment
+Group
+Role
+
+
+# A customer wants to use Oracle Cloud Infrastructure (OCI) for storing application backups which can be stored for months, but retrieved immediately based on business needs.
+Which OCI storage service can be used to meet this requirement? 
+Archive Storage
+>> Block Volume
+File Storage
+Object Storage (standard)
+
+
+
+# You were recently assigned to manage a project to deploy Oracle E-Business Suite on Oracle Cloud Infrastructure (OCI).  The application will require a database, several servers, and a shared file system.  
+Which three OCI services are best suited for this project? 
+(정답 모두 선택)
+>> OCI virtual or Bare Metal DB Systems
+>> Object Storage Service
+OCI Streaming Service
+Oracle Container Engine for Kubernetes
+>> File Storage Service
+Virtual Machine (VM) or Bare Metal (BM) compute instances
+
+
+# Which three services integrate with Oracle Cloud Infrastructure (OCI) Key Management? 
+(정답 모두 선택)
+>> Block Volume
+>> Object Storage
+Identity and Access Management
+Functions
+>> File Storage
+Auto Scaling
+
+
+# Which feature is NOT a component of Oracle Cloud Infrastructure (OCI) Identity and Access Management service? 
+Federation
+Policies
+>> Network Security Group 
+User Credentials
+
+
+
+# What is the primary use case for using Web Application Firewall on Oracle Cloud Infrastructure (OCI)? 
+Hardware based key storage
+Patch management
+>> Filter malicious web traffic
+Network security control
+
+
+# Which two statements are true regarding Oracle Cloud Infrastructure Regions?
+(정답 모두 선택)
+>> Some regions only provide test/dev environments.
+Some regions provide multiple subregions.
+>> Some regions provide a single fault domain.
+Some regions provide multiple availability domains.
+Some regions provide a single availability domain.
+
+
+# You are configuring a 2-node Oracle Real Application Cluster (RAC) DB System for high availability. These instances need near zero latency for inter-instance communication. 
+What is the correct configuration for this scenario? 
+Configure instances across multiple availability domains.
+Configure instances across multiple fault domains.
+>> Configure instances inside single VCN using multiple availability domains.
+Configure instances across multiple regions.
+
+
+# 38.Which is an important consideration when choosing an Oracle Cloud Infrastructure region? 
+>> Choose the region that is in close proximity to end users for best performance.
+Choose the region that offers single availability domain for cost saving.
+Choose the region that is far away from application to eliminate single point of failure.
+Choose the region that offers the lowest cost.
+
+
+# Which three statements are correct about Oracle Cloud Infrastructure Compartments?
+(정답 모두 선택)
+Resources inside the compartments cannot be moved to another compartment.
+>> Compartments can have sub-compartments.
+Each compartment is local to a region.
+>> Compartments are logical entities.
+>> Compartments can be nested.
+Compartments can be used for authentication services.
+
+
+# How will you configure high availability for an application in an Oracle Cloud Infrastructure region with a single Availability Domain? 
+Setup your application across multiple compartments.
+Setup your application across multiple Virtual Cloud Network (VCN).
+Divide region into multiple subregions.
+- Setup your application across multiple Fault Domains.
+
+
+# 34. Your organization has a Spark application that sometimes consumes a large amount of compute resources. You need to run this on Oracle Cloud Infrastructure (OCI).
+Which OCI service can be used to meet this requirement?
+Data Catalog
+Data Integration
+File Storage
+>> Data Flow
+
+# 35. Your client needs to move their Extract-Transform-Load (ETL) process to Oracle Cloud Infrastructure (OCI). They want to take a no-code approach.
+Which OCI service should you recommend? 
+Data Catalog
+>> Data Integration
+Data Science
+Analytics Cloud
+
+
+# Which three are capabilities of Oracle Cloud Infrastructure Data Catalog service? 
+(정답 모두 선택)
+>> It provides a repository of searchable metadata.
+It enables enrichment of the metadata.
+It runs Spark jobs at scale.
+>> It has an accelerated library to quickly build analytics models.
+It is an alternative to Autonomous Data Warehouse.
+>> It can automate harvesting of data.
+
+
+# You want to edit a compute instance in a running state to support changes in your application workload.
+Which parameter is NOT modifiable? 
+Fault Domain
+>> Primary Private IP address
+Number of OCPUs
+Amount of Memory
+
+
+# Which is NOT a valid compute shape option within the Oracle Cloud Infrastructure (OCI) compute service? 
+>> Bare Metal
+Container Instance
+Virtual Machine
+Dedicated Virtual Machine Host
+
+
+# 30.You have a web application that receives 5X more traffic on the weekends than weekdays. You need to automatically match capacity to demand, keep the application always up and running, and save cost.
+Which Oracle Cloud Infrastructure (OCI) compute feature can be used to meet these requirements? 
+>> Autoscaling
+Vertical Scaling
+Manual Scaling
+Parallel Scaling
+
+
+# 29. Which Oracle Cloud Infrastructure (OCI) Monitoring service feature uses metrics for monitoring and consists of a trigger action and notification method? 
+Namespaces
+Triggers
+Queries
+>> Alarms
+
+
+# Which two statements are true with regard to the Oracle Cloud Infrastructure (OCI) Logging service? 
+(정답 2개 선택)
+>> It enables you to analyze cloud resources using custom metrics
+It is a centralized single pane of glass for all logs in a tenancy.
+It can analyze critical diagnostic information that describes how resources are performing and being accessed.
+>> It can index, enrich, and aggregate log data from applications.
+It enables you to monitor cloud resources using metrics and alarms.
+
+
+# 27. Which Oracle Cloud Infrastructure (OCI) service can be configured to send you an alert for high CPU usage?
+Analytics
+Logging Analytics
+Logging
+>> Monitoring
+Events
+
+
+## You have an extremely high performance database workload that requires at-least 100 IOPS/GB and 100,000 IOPS per volume.
+Which Oracle Cloud Infrastructure (OCI) Block Volume performance level can be used to meet this requirement?
+Lower cost performance
+Balanced performance
+>> Ultra-high performance
+Higher performance
+
+
+# You have backup data that needs to be stored for at least six months. This data is not supposed to be accessed frequently, but needs to be available immediately when needed. You also want to reduce your storage costs.
+Which Oracle Cloud Infrastructure (OCI) Object Storage tier can be used to meet these requirements? 
+Auto-Tiering
+Standard tier
+>> Infrequent access tier
+Archive tier
+
+
+# 24.Which statement is NOT true about Oracle Cloud Infrastructure (OCI) Block Volume service? 
+You can clone an existing block volume to a new, larger volume.
+>> You can expand an existing block volume in place with online resizing.
+You can decrease the size of a block volume.
+You can increase the size of a block volume.
+
+
+# You store multiple versions of objects in a bucket, but your IT team has asked you to delete any previous object versions 120 days after the object version transitions from the latest version to a previous version.
+Which Oracle Cloud Infrastructure (OCI) Object Storage feature can be used for this purpose? 
+Multipart Uploads
+Pre-Authenticated Requests
+>> Object Lifecycle Management
+Retention Rules
+
+
+# 22.A banking platform has been re-designed to a microservices-based architecture using Docker containers.
+ Which Oracle Cloud Infrastructure (OCI) service should be used for deployment of these new microservices? 
+API Gateway
+Artifact Registry
+Streaming Service
+Event Service
+>> Container Engine for Kubernetes (OKE)
+
+
+
+# 21. Which statement is valid for Oracle Cloud Infrastructure Container Registry (OCIR)?
+You can create only private Docker repositories in OCIR.
+A single registry can only contain either private or public Docker repositories.
+>> A single registry can contain both private and public Docker repositories.
+You can create only public Docker repositories in OCIR.
+
+
+# Which Oracle Cloud Infrastructure (OCI) service allows you to run code without provisioning any underlying infrastructure resources (such as virtual machines)?
+Compute
+Oracle Container Engine for Kubernetes (OKE)
+>> Oracle Functions
+API Gateway
+Storage Gateway
+
+
+# Which Oracle Cloud Infrastructure (OCI) service leverages Terraform to configure infrastructure-as-code? 
+Compute
+Events
+>> Resource Manager
+Compartment Explorer
+Oracle Container Engine for Kubernetes (OKE)
+
+
+# Which two statements are valid regarding Virtual Cloud Network (VCN) peering between two VCNs?
+(정답 모두 선택)
+>> Peered VCNs need to be part of same OCI tenancy.
+A VCN peering connection is a VPN-based connection.
+>> Peered VCNs can have overlapping CIDRs.
+Peered VCNs can exist in the same OCI region.
+Peered VCNs can exist in different OCI regions.
+
+
+# 17. Which OSI layer traffic is supported by the Oracle Cloud Infrastructure (OCI) Network Load Balancer?
+Layer 5 (Session)
+Layer 2 (Data Link)
+>> Layer 4 (Transport)
+Layer 7 (Application)
+
+
+# Which two Oracle Cloud Infrastructure (OCI) Virtual Cloud Network (VCN) firewall features can be used to control traffic? 
+(정답 2개 선택)
+>> Network Security Groups
+VCN Flow Logs
+>> Security Lists
+VNIC Metrics
+
+
+# 15.Which TWO statements correctly describe the Oracle Cloud Infrastructure Accelerated Data Science SDK?
+(정답 2개 선택)
+It is an additional cost to the Data Science service.
+>> It is a Python library that makes common tasks faster, easier, and less error prone.
+>> It is included as part of the Data Science service.
+It is a PHP library that makes common tasks faster, easier, and less error prone.
+It is a JavaScript library that makes common tasks faster, easier, and less error prone.
+
+
+# 14.Which type of data transfer incur costs within Oracle Cloud Infrastructure (OCI)?
+Data transfer from one instance to another across different Availability Domains in a region
+Data ingress from the Internet
+Data transfer from one instance to another within the same Availability Domain
+>> Data egress to the Internet
+
+
+# 13.Which is NOT a valid statement regarding Oracle Cloud Infrastructure (OCI) Compartments? 
+Compartments are restricted to a single region.
+Resources can interact with other resources in different compartments.
+Each resource belongs to a single compartment.
+>> You can give group of users access to compartments by writing policies.
+
+
+# Which two statements are correct regarding Oracle Cloud Infrastructure Fault Domains?
+(정답 2개 선택)
+Fault domains are logical data center within regions.
+Fault domains are logical data centers with availability domains.
+>> Fault domains are physical data centers with availability domains.
+Fault domains are physical data centers within regions.
+>> Fault domains are used to mitigate hardware failures.
+
+
+# Which is an open source system for automating deployment, scaling, and management of containerized applications? 
+Docker
+Jenkins
+Terraform
+Ansible
+>> Kubernetes
+
+
+# Which statement accurately describes an Oracle Cloud Infrastructure Region? 
+Each region has a single Fault Domain.
+>> Each Availability Domain has three Fault Domains.
+Each Fault Domain has multiple Availability Domains.
+Each Availability Domain has a single Fault Domain.
+
+
+# Which capability can be used to protect against unexpected hardware or power supply failures within an Oracle Cloud Infrastructure Availability Domain? 
+Top of Rack Switches
+Compartments
+Fault Domains
+>> Power Distribution Units
+
+
+# ??? Which three statements correctly describe attributes of Oracle Cloud Infrastructure (OCI) compartments?
+(정답 모두 선택)
+>> Compartments can have sub compartments.
+>> Compartments can be used to logically separate OCI resources.
+Resources within one compartment cannot interact with resources in other compartments.
+Compartments can be used to physically separate OCI resources.
+>> Your tenancy by default comes with a root compartment.
+
+
+# Which security issue CANNOT be identified using Oracle Cloud Infrastructure (OCI) Vulnerability scanning service? 
+OS packages that require updates and patches to address vulnerabilities
+Ports that are unintentionally left open
+OS configurations that hackers might exploit
+>> Cross-Site Scripting (XSS)
+
+
+
+# What two types of encryption keys are recognized by the Oracle Cloud Infrastructure (OCI) Vault service?
+(정답 모두 선택)
+Alias keys
+- Master Encryption keys
+Auth Tokens
+Wrapper keys
+- Data Encryption keys
+
+
+# 5.Your IT team has created a web-based marketing site that needs to be protected against internet threats including Cross-Site Scripting (XSS) and SQL Injection. 
+Which Oracle Cloud Infrastructure (OCI) security service should they use?
+Vulnerability Scanning
+>> Web Application Firewall
+Vault
+Bastion
+
+
+
+# 4.Which key encryption algorithm is NOT supported by the Oracle Cloud Infrastructure (OCI) Vault service? 
+Elliptic curve digital signature algorithm (ECDSA)
+Rivest-Shamir-Adleman (RSA)
+Advanced Encryption Standard (AES)
+>> JSON Web Algorithm (JWA)
+
+
+
+# 3.Which Oracle offering lets a customer provision Oracle Cloud Infrastructure (OCI) services into their own data centers in a self-contained model, achieving the same architecture, billing and operational processes of the OCI public cloud? 
+OCI Customer Region
+>> OCI Dedicated Region
+OCI Private Region
+Oracle Cloud VMware Solution
+
+
+# 2.Which three are benefits of Oracle Cloud VMware Solution? 
+(정답 모두 선택)
+>> Runs the certified VMware product stack in the cloud.
+>> Provides full administrative control to customers.
+Customers can choose their own data center hardware.
+>> VMware workloads are refactored for migration.
+Customers can leverage same set of tools and processes used on-premises.
+
+
+# 1. What is NOT a primary use case for the Oracle Cloud VMware Solution?
+Disaster Recovery
+Data Center Extension
+Cloud Migration
+>> Hyper-V Workloads
+ 
+
+
+
+
+### 연습문제 
+# Which Oracle Cloud Infrastructure service should you use to manage metadata support data governance?
+Data Catalog (*)
+
+# Which of these is customer's responsibilities in the shared responsibilities model for security?
+Identity and access management (*)
+
+# In the context of compute, what does vertical scaling mean?
+Changing to a larger or smaller shape. (*)
+
+# Which statement is true about the Oracle Cloud Infrastructure Compute service?
+You can launch either virtual machines or bare metal instances. (*)
+
+# Which statement is true about an Oracle Cloud Infrastructure (OCI) Compute instance?
+It always gets a private IP address. (*)
+
+# Which task is performed by default by an Oracle Autonomous Database?
+Firmware Patching (*)
+
+# What Oracle Cloud Infrastructure (OCI) capability provides logical isolation for resources?
+Compartments (*)
+
+# Which statement is true about a Web Application Firewall (WAF)?
+It intercepts HTTP/S traffic and passes it through a set of rules. (*)
+
+# You want to store and manage container images on Oracle Cloud Infrastructure (OCI) and you want to share them with the other developers working on the same application.
+Which service should you use?
+Oracle Cloud Infrastructure Registry (*)
+
+# Which of these is correct for opening an Oracle Support Service Request?
+Only Paid accounts can open service requests (*)
+Full support is available to Free Tier accounts with Free trial credits
+
+# You have developed an application for your company and you want to deploy it in Oracle Cloud Infrastructure.
+How must you deploy the application to ensure the highest level of availability and resilience?
+Across multiple regions and availability domains. (*)
+
+# What is a benefit of an Oracle Cloud Dedicated Region?
+Security of the private cloud (*)
+
+
+# What is the IAM service feature that enables instances to be authorized actors (or principals) called?
+Instance Prinicipals (*)
+
+# Which Exadata infrastructure option can you use for deploying an Oracle Autonomous Database?
+Dedicated Exadata infrastructure (*)
+
+# Which statement is true about a Virtual Cloud Network (VCN)?
+A subnet for a VCN can be regional. (*)
+
+# Which OCI service should you use to run Apache Spark applications?
+Data Flow (*)
+
+# You want to provide restricted and time-limited access to databases that don't have public endpoints.
+Which OCI service should you use to achieve this?
+Bastion (*)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
