@@ -97,7 +97,7 @@ total 16
 -rwxr-x---. 1 weblogic weblogic 1216 Oct  7 21:44 setup.sh
 
 - source setup.sh 실행 (java 환경변수 설정)
-Please set the JAVA_HOME environment variable to match the location of your Java installation. Java 8 or newer is required
+Please set the JAVA_HOME environment variable to match the location of your Java installation. Java 8 or newer is requiredzz
 
 
 4. JAVA 환경변수를 .bash_profile 등록
@@ -106,7 +106,7 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin:$MAVEN_HOME/bin:$JAVA_HOME/bin
 
 - source setup.sh 실행
 - imagetool.sh 실행 (스샷 참고)
-[weblogic@weblogic-test bin]$ ./setup.sh
+[weblogic@weblogic-test bin]$ ./setup.shzzzz
 [weblogic@weblogic-test bin]$ ./imagetool.sh
 Missing required subcommand
 Usage: imagetool [OPTIONS] [COMMAND]
@@ -140,7 +140,7 @@ total 5867356
 
 
 
-2. 캐시툴 사용 (Cache Tool to add the installers)
+2. 캐시툴 사용 (Cache Tool to add the installzzers)
 위에 저장했던 경로와 파일명을 입력해줍니다.
 
 - imagetool 명령어
