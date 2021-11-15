@@ -1,16 +1,16 @@
 
-##  19c ¹× 18.3 JDBC¸¦ »ç¿ëÇÏ´Â ÀÚÀ² µ¥ÀÌÅÍº£ÀÌ½º(ATP ¶Ç´Â ADW)¿ÍÀÇ Java ¿¬°á
+##  19c ë° 18.3 JDBCë¥¼ ì‚¬ìš©í•˜ëŠ” ììœ¨ ë°ì´í„°ë² ì´ìŠ¤(ATP ë˜ëŠ” ADW)ì™€ì˜ Java ì—°ê²°
 oradb19c-free
-jndiÀÌ¸§ : oradb19cfree
-»ç¿ëÀÚÀÌ¸§ : admin
-ÆĞ½º¿öµå : Kl121212!!@@
+jndiì´ë¦„ : oradb19cfree
+ì‚¬ìš©ìì´ë¦„ : admin
+íŒ¨ìŠ¤ì›Œë“œ : Kl121212!!@@
 
 
 # TNS
-¿À¶óÅ¬¿¡¼­ tnsnames.ora ÆÄÀÏ¿¡ µ¥ÀÌÅÍº£ÀÌ½º ÁÖ¼Ò¸¦ Á¤ÀÇÇØ³õÀº ÆÄÀÏ
-tnsnames.ora ÆÄÀÏÀÌ ÀÖÀ¸¸é IP ÁÖ¼Ò¿Í SID È¤Àº Serivce NameÀ» Á÷Á¢ ÀÔ·ÂÇÏÁö ¾Ê¾Æµµ DB¿Í ¿¬°á°¡´É
+ì˜¤ë¼í´ì—ì„œ tnsnames.ora íŒŒì¼ì— ë°ì´í„°ë² ì´ìŠ¤ ì£¼ì†Œë¥¼ ì •ì˜í•´ë†“ì€ íŒŒì¼
+tnsnames.ora íŒŒì¼ì´ ìˆìœ¼ë©´ IP ì£¼ì†Œì™€ SID í˜¹ì€ Serivce Nameì„ ì§ì ‘ ì…ë ¥í•˜ì§€ ì•Šì•„ë„ DBì™€ ì—°ê²°ê°€ëŠ¥
 
-TNS Á¢¼Ó¹®ÀÚ¿­
+TNS ì ‘ì†ë¬¸ìì—´
 oradb19cfree_high = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-seoul-1.oraclecloud.com))(connect_data=(service_name=yh0olybn5pqce4n_oradb19cfree_high.adb.oraclecloud.com))(security=(ssl_server_cert_dn="CN=adb.ap-seoul-1.oraclecloud.com, OU=Oracle ADB SEOUL, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
 oradb19cfree_low = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-seoul-1.oraclecloud.com))(connect_data=(service_name=yh0olybn5pqce4n_oradb19cfree_low.adb.oraclecloud.com))(security=(ssl_server_cert_dn="CN=adb.ap-seoul-1.oraclecloud.com, OU=Oracle ADB SEOUL, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
 oradb19cfree_medium = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-seoul-1.oraclecloud.com))(connect_data=(service_name=yh0olybn5pqce4n_oradb19cfree_medium.adb.oraclecloud.com))(security=(ssl_server_cert_dn="CN=adb.ap-seoul-1.oraclecloud.com, OU=Oracle ADB SEOUL, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
@@ -19,8 +19,6 @@ oradb19cfree_tpurgent = (description= (retry_count=20)(retry_delay=3)(address=(p
 
 
 
-# Âü°íÀÚ·á
-https://www.oracle.com/database/technologies/java-connectivity-to-atp.html#Tomcat_WLS-tab
 
 - DataSourceSample.java 
 https://github.com/oracle/oracle-db-examples/blob/master/java/jdbc/ConnectionSamples/DataSourceSample.java
@@ -28,50 +26,50 @@ https://github.com/oracle/oracle-db-examples/blob/master/java/jdbc/ConnectionSam
 - oracle-db-examples
 https://github.com/oracle/oracle-db-examples/tree/master/java
 
-- WLS(Web Logic Server) ¸¦ »ç¿ëÇÏ¿© ATP ¶Ç´Â ADW¿¡ ¿¬°á ºñµğ¿À
+- WLS(Web Logic Server) ë¥¼ ì‚¬ìš©í•˜ì—¬ ATP ë˜ëŠ” ADWì— ì—°ê²° ë¹„ë””ì˜¤
 https://www.youtube.com/watch?v=lqvzYDwVw6w
-ATP¸¦ È°¿ëÇÏ¿© oracle DB¿¡ Á¢¼ÓÇÏ´Â ¹æ¹ıÀº µÎ°¡Áö ÀÔ´Ï´Ù.
-JAVA Å° ÀúÀå¼Ò¸¦ »ç¿ëÇÏ´Â ¹æ¹ı°ú oracle ÀüÀÚÁö°©À» »ç¿ëÇÏ´Â ¹æ¹ı
+ATPë¥¼ í™œìš©í•˜ì—¬ oracle DBì— ì ‘ì†í•˜ëŠ” ë°©ë²•ì€ ë‘ê°€ì§€ ì…ë‹ˆë‹¤.
+JAVA í‚¤ ì €ì¥ì†Œë¥¼ ì‚¬ìš©í•˜ëŠ” ë°©ë²•ê³¼ oracle ì „ìì§€ê°‘ì„ ì‚¬ìš©í•˜ëŠ” ë°©ë²•
 
 
 
-# weblogic ¿¬°á¹æ¹ı
-1. À¥¾Û ÇÁ·ÎÁ§Æ® »ı¼º
-WLS v12.2.1.4´Â JDK8(ojdbc8.jar)°ú È£È¯µÇ´Â 19.3 JDBC µå¶óÀÌ¹ö¿Í ÇÔ²² Á¦°øµË´Ï´Ù. 
-µû¶ó¼­ ¾Æ¹« °Íµµ ÇÒ ÇÊ¿ä°¡ ¾ø½À´Ï´Ù.
-Github WebLogicServer_Servlet ¿¡¼­ ÇÁ·ÎÁ§Æ®·Î ¼­ºí¸´À» º¹»çÇÕ´Ï´Ù .
+# weblogic ì—°ê²°ë°©ë²•
+1. ì›¹ì•± í”„ë¡œì íŠ¸ ìƒì„±
+WLS v12.2.1.4ëŠ” JDK8(ojdbc8.jar)ê³¼ í˜¸í™˜ë˜ëŠ” 19.3 JDBC ë“œë¼ì´ë²„ì™€ í•¨ê»˜ ì œê³µë©ë‹ˆë‹¤. 
+ë”°ë¼ì„œ ì•„ë¬´ ê²ƒë„ í•  í•„ìš”ê°€ ì—†ìŠµë‹ˆë‹¤.
+Github WebLogicServer_Servlet ì—ì„œ í”„ë¡œì íŠ¸ë¡œ ì„œë¸”ë¦¿ì„ ë³µì‚¬í•©ë‹ˆë‹¤ .
 
-2. µ¥ÀÌÅÍ ¼Ò½º »ı¼º
-Web Logic Console(http://localhost:7001/console)¿¡ ·Î±×ÀÎÇÏ¿© UCP µ¥ÀÌÅÍ ¼Ò½º ¶Ç´Â È°¼º ±×¸®µå ¸µÅ© µ¥ÀÌÅÍ ¼Ò½º(AGL)¸¦ »ı¼ºÇÕ´Ï´Ù. ÀÚ¼¼ÇÑ ³»¿ëÀº ºí·Î±× ¸¦ ÂüÁ¶ÇÏ¼¼¿ä.
-¿¬°á URL¿¡´Â tnsnames.oraÀÇ TNS º°ÄªÀÌ Æ÷ÇÔµÇ¾î¾ß ÇÏ°í TNS_ADMINÀº Áö°© zip ÆÄÀÏÀÌ ´Ù¿î·ÎµåµÇ´Â À§Ä¡¸¦ °¡¸®ÄÑ¾ß ÇÕ´Ï´Ù.
+2. ë°ì´í„° ì†ŒìŠ¤ ìƒì„±
+Web Logic Console(http://localhost:7001/console)ì— ë¡œê·¸ì¸í•˜ì—¬ UCP ë°ì´í„° ì†ŒìŠ¤ ë˜ëŠ” í™œì„± ê·¸ë¦¬ë“œ ë§í¬ ë°ì´í„° ì†ŒìŠ¤(AGL)ë¥¼ ìƒì„±í•©ë‹ˆë‹¤. ìì„¸í•œ ë‚´ìš©ì€ ë¸”ë¡œê·¸ ë¥¼ ì°¸ì¡°í•˜ì„¸ìš”.
+ì—°ê²° URLì—ëŠ” tnsnames.oraì˜ TNS ë³„ì¹­ì´ í¬í•¨ë˜ì–´ì•¼ í•˜ê³  TNS_ADMINì€ ì§€ê°‘ zip íŒŒì¼ì´ ë‹¤ìš´ë¡œë“œë˜ëŠ” ìœ„ì¹˜ë¥¼ ê°€ë¦¬ì¼œì•¼ í•©ë‹ˆë‹¤.
 
-¿¹Á¦)
+ì˜ˆì œ)
 jdbc:oracle:thin:@jdbctest_medium?TNS_ADMIN=/Users/test/ATPTesting/wallet_JDBCTEST
 
-(1) ¼­¹ö¿¡ ÀüÀÚÅ° º¹ ÈÄ ¾ĞÃà ÇØÁ¦ÇÑ °æ·Î 
+(1) ì„œë²„ì— ì „ìí‚¤ ë³µ í›„ ì••ì¶• í•´ì œí•œ ê²½ë¡œ 
 /home/weblogic/Wallet_oradb19cfree
 
-(2) °æ·ÎÀÔ·ÂÇÑ URL »ùÇÃ
+(2) ê²½ë¡œì…ë ¥í•œ URL ìƒ˜í”Œ
 jdbc:oracle:thin:@oradb19cfree_high?TNS_ADMIN=/home/weblogic/Wallet_oradb19cfree
 
-"Å×½ºÆ® ±¸¼º"À» Å¬¸¯ÇÑµÚ ¼º°øÀÌ ³ª¿Í¾ß ÇÑ´Ù.
+"í…ŒìŠ¤íŠ¸ êµ¬ì„±"ì„ í´ë¦­í•œë’¤ ì„±ê³µì´ ë‚˜ì™€ì•¼ í•œë‹¤.
 
-¿Ï·á
-
-
+ì™„ë£Œ
 
 
-## Tomcat ¿¡¼­ UCP·Î ¿¬°áÇÏ´Â ¹æ¹ı
-1. Tomcat ¿¬°á
-ÀüÁ¦ Á¶°Ç ¼½¼ÇÀÇ ¸ğµç ´Ü°è¸¦ ¿Ï·áÇØ¾ß ÇÕ´Ï´Ù.
-Tomcat_ServletÀÇ ³»¿ëÀ» Github¿¡¼­ /TOMCAT_HOME/webapps/UCPCloud µğ·ºÅÍ¸®·Î º¹»çÇÕ´Ï´Ù.
-ÀÀ¿ë ÇÁ·Î±×·¥¿¡ ´ëÇØ ´Ù¸¥ ÀÌ¸§À» ¼±ÅÃÇÒ ¼öµµ ÀÖ½À´Ï´Ù.
-Àå¼Ò 19C ¶Ç´Â 18C JDBC µå¶óÀÌ¹ö (ojdbc8.jar)¿Í UCP (ucp.jar) / TOMCAT_HOME / webapps¿¡ / UCPCloud / WEB-INF / lib µğ·ºÅä¸®¿¡¼­. oraclepki.jar, osdt_core.jar, and osdt_cert.jar°°Àº À§Ä¡¿¡ ´ÙÀ½ Ç×¾Æ¸®°¡ ÀÖ´ÂÁö È®ÀÎÇÏ½Ê½Ã¿À .
 
-2. context.xml »ı¼º
-/TOMCAT_HOME/webapps/UCPCloud/META-INF/context.xml ¾Æ·¡¿¡ UCP µ¥ÀÌÅÍ ¼Ò½º¸¦ »ı¼ºÇÕ´Ï´Ù. 
-TNS º°ÄªÀ» ¼­ºñ½º ÀÌ¸§À¸·Î »ç¿ëÇØ¾ß ÇÏ¸ç TNS_ADMINµµ Å¬¶óÀÌ¾ğÆ® ÀÚ°İ Áõ¸í(Wallet_dbname.zip)ÀÌ ÀÖ´Â °æ·Î¸¦ °¡¸®ÄÑ¾ß ÇÕ´Ï´Ù. 
-»ùÇÃ context.xmlÀº ¾Æ·¡¿Í °°½À´Ï´Ù.
+
+## Tomcat ì—ì„œ UCPë¡œ ì—°ê²°í•˜ëŠ” ë°©ë²•
+1. Tomcat ì—°ê²°
+ì „ì œ ì¡°ê±´ ì„¹ì…˜ì˜ ëª¨ë“  ë‹¨ê³„ë¥¼ ì™„ë£Œí•´ì•¼ í•©ë‹ˆë‹¤.
+Tomcat_Servletì˜ ë‚´ìš©ì„ Githubì—ì„œ /TOMCAT_HOME/webapps/UCPCloud ë””ë ‰í„°ë¦¬ë¡œ ë³µì‚¬í•©ë‹ˆë‹¤.
+ì‘ìš© í”„ë¡œê·¸ë¨ì— ëŒ€í•´ ë‹¤ë¥¸ ì´ë¦„ì„ ì„ íƒí•  ìˆ˜ë„ ìˆìŠµë‹ˆë‹¤.
+ì¥ì†Œ 19C ë˜ëŠ” 18C JDBC ë“œë¼ì´ë²„ (ojdbc8.jar)ì™€ UCP (ucp.jar) / TOMCAT_HOME / webappsì— / UCPCloud / WEB-INF / lib ë””ë ‰í† ë¦¬ì—ì„œ. oraclepki.jar, osdt_core.jar, and osdt_cert.jarê°™ì€ ìœ„ì¹˜ì— ë‹¤ìŒ í•­ì•„ë¦¬ê°€ ìˆëŠ”ì§€ í™•ì¸í•˜ì‹­ì‹œì˜¤ .
+
+2. context.xml ìƒì„±
+/TOMCAT_HOME/webapps/UCPCloud/META-INF/context.xml ì•„ë˜ì— UCP ë°ì´í„° ì†ŒìŠ¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤. 
+TNS ë³„ì¹­ì„ ì„œë¹„ìŠ¤ ì´ë¦„ìœ¼ë¡œ ì‚¬ìš©í•´ì•¼ í•˜ë©° TNS_ADMINë„ í´ë¼ì´ì–¸íŠ¸ ìê²© ì¦ëª…(Wallet_dbname.zip)ì´ ìˆëŠ” ê²½ë¡œë¥¼ ê°€ë¦¬ì¼œì•¼ í•©ë‹ˆë‹¤. 
+ìƒ˜í”Œ context.xmlì€ ì•„ë˜ì™€ ê°™ìŠµë‹ˆë‹¤.
 
 <Context docBase="UCPCloud" path="/UCPCloud"
     reloadable="true" source="org.eclipse.jst.jee.server:samplejdbcpage">
@@ -107,5 +105,5 @@ TNS º°ÄªÀ» ¼­ºñ½º ÀÌ¸§À¸·Î »ç¿ëÇØ¾ß ÇÏ¸ç TNS_ADMINµµ Å¬¶óÀÌ¾ğÆ® ÀÚ°İ Áõ¸í(Wallet
 </Context>
 
 
-3. Tomcat ½ÃÀÛ ¹× ¼­ºí¸´ È£Ãâ
-Tomcat ¼­¹ö¸¦ ½ÃÀÛÇÏ°í http://lcoalhost:8080/UCPCloud/UCPServlet¿¡¼­ ¼­ºí¸´À» È£ÃâÇÕ´Ï´Ù.
+3. Tomcat ì‹œì‘ ë° ì„œë¸”ë¦¿ í˜¸ì¶œ
+Tomcat ì„œë²„ë¥¼ ì‹œì‘í•˜ê³  http://lcoalhost:8080/UCPCloud/UCPServletì—ì„œ ì„œë¸”ë¦¿ì„ í˜¸ì¶œí•©ë‹ˆë‹¤.
