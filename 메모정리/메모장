@@ -1,109 +1,26 @@
 
-##  19c 및 18.3 JDBC를 사용하는 자율 데이터베이스(ATP 또는 ADW)와의 Java 연결
-oradb19c-free
-jndi이름 : oradb19cfree
-사용자이름 : admin
-패스워드 : Kl121212!!@@
-
-
-# TNS
-오라클에서 tnsnames.ora 파일에 데이터베이스 주소를 정의해놓은 파일
-tnsnames.ora 파일이 있으면 IP 주소와 SID 혹은 Serivce Name을 직접 입력하지 않아도 DB와 연결가능
-
-TNS 접속문자열
-oradb19cfree_high = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-seoul-1.oraclecloud.com))(connect_data=(service_name=yh0olybn5pqce4n_oradb19cfree_high.adb.oraclecloud.com))(security=(ssl_server_cert_dn="CN=adb.ap-seoul-1.oraclecloud.com, OU=Oracle ADB SEOUL, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
-oradb19cfree_low = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-seoul-1.oraclecloud.com))(connect_data=(service_name=yh0olybn5pqce4n_oradb19cfree_low.adb.oraclecloud.com))(security=(ssl_server_cert_dn="CN=adb.ap-seoul-1.oraclecloud.com, OU=Oracle ADB SEOUL, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
-oradb19cfree_medium = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-seoul-1.oraclecloud.com))(connect_data=(service_name=yh0olybn5pqce4n_oradb19cfree_medium.adb.oraclecloud.com))(security=(ssl_server_cert_dn="CN=adb.ap-seoul-1.oraclecloud.com, OU=Oracle ADB SEOUL, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
-oradb19cfree_tp = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-seoul-1.oraclecloud.com))(connect_data=(service_name=yh0olybn5pqce4n_oradb19cfree_tp.adb.oraclecloud.com))(security=(ssl_server_cert_dn="CN=adb.ap-seoul-1.oraclecloud.com, OU=Oracle ADB SEOUL, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
-oradb19cfree_tpurgent = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-seoul-1.oraclecloud.com))(connect_data=(service_name=yh0olybn5pqce4n_oradb19cfree_tpurgent.adb.oraclecloud.com))(security=(ssl_server_cert_dn="CN=adb.ap-seoul-1.oraclecloud.com, OU=Oracle ADB SEOUL, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
 
 
 
 
-- DataSourceSample.java 
-https://github.com/oracle/oracle-db-examples/blob/master/java/jdbc/ConnectionSamples/DataSourceSample.java
-
-- oracle-db-examples
-https://github.com/oracle/oracle-db-examples/tree/master/java
-
-- WLS(Web Logic Server) 를 사용하여 ATP 또는 ADW에 연결 비디오
-https://www.youtube.com/watch?v=lqvzYDwVw6w
-ATP를 활용하여 oracle DB에 접속하는 방법은 두가지 입니다.
-JAVA 키 저장소를 사용하는 방법과 oracle 전자지갑을 사용하는 방법
-
-
-
-# weblogic 연결방법
-1. 웹앱 프로젝트 생성
-WLS v12.2.1.4는 JDK8(ojdbc8.jar)과 호환되는 19.3 JDBC 드라이버와 함께 제공됩니다. 
-따라서 아무 것도 할 필요가 없습니다.
-Github WebLogicServer_Servlet 에서 프로젝트로 서블릿을 복사합니다 .
-
-2. 데이터 소스 생성
-Web Logic Console(http://localhost:7001/console)에 로그인하여 UCP 데이터 소스 또는 활성 그리드 링크 데이터 소스(AGL)를 생성합니다. 자세한 내용은 블로그 를 참조하세요.
-연결 URL에는 tnsnames.ora의 TNS 별칭이 포함되어야 하고 TNS_ADMIN은 지갑 zip 파일이 다운로드되는 위치를 가리켜야 합니다.
-
-예제)
-jdbc:oracle:thin:@jdbctest_medium?TNS_ADMIN=/Users/test/ATPTesting/wallet_JDBCTEST
-
-(1) 서버에 전자키 복 후 압축 해제한 경로 
-/home/weblogic/Wallet_oradb19cfree
-
-(2) 경로입력한 URL 샘플
-jdbc:oracle:thin:@oradb19cfree_high?TNS_ADMIN=/home/weblogic/Wallet_oradb19cfree
-
-"테스트 구성"을 클릭한뒤 성공이 나와야 한다.
-
-완료
 
 
 
 
-## Tomcat 에서 UCP로 연결하는 방법
-1. Tomcat 연결
-전제 조건 섹션의 모든 단계를 완료해야 합니다.
-Tomcat_Servlet의 내용을 Github에서 /TOMCAT_HOME/webapps/UCPCloud 디렉터리로 복사합니다.
-응용 프로그램에 대해 다른 이름을 선택할 수도 있습니다.
-장소 19C 또는 18C JDBC 드라이버 (ojdbc8.jar)와 UCP (ucp.jar) / TOMCAT_HOME / webapps에 / UCPCloud / WEB-INF / lib 디렉토리에서. oraclepki.jar, osdt_core.jar, and osdt_cert.jar같은 위치에 다음 항아리가 있는지 확인하십시오 .
-
-2. context.xml 생성
-/TOMCAT_HOME/webapps/UCPCloud/META-INF/context.xml 아래에 UCP 데이터 소스를 생성합니다. 
-TNS 별칭을 서비스 이름으로 사용해야 하며 TNS_ADMIN도 클라이언트 자격 증명(Wallet_dbname.zip)이 있는 경로를 가리켜야 합니다. 
-샘플 context.xml은 아래와 같습니다.
-
-<Context docBase="UCPCloud" path="/UCPCloud"
-    reloadable="true" source="org.eclipse.jst.jee.server:samplejdbcpage">
-
-<Resource name="tomcat/UCP_atp" auth="Container"
-   factory="oracle.ucp.jdbc.PoolDataSourceImpl"
-   type="oracle.ucp.jdbc.PoolDataSource"
-   description="UCP Pool in Tomcat"
-   connectionFactoryClassName="oracle.jdbc.pool.OracleDataSource"
-   minPoolSize="5"
-   maxPoolSize="50"
-   initialPoolSize="15"
-   user="jdbcuser"
-   password="XXXXXXXXXXX"
-   url="jdbc:oracle:thin:@jdbctest_medium?TNS_ADMIN=/Users/test/ATPTesting/wallet_JDBCTEST"
-/>
-</Context>
-<Context docBase="UCPCloud" path="/UCPCloud"
-    reloadable="true" source="org.eclipse.jst.jee.server:samplejdbcpage">
-
-<Resource name="tomcat/UCP_atp" auth="Container"
-   factory="oracle.ucp.jdbc.PoolDataSourceImpl"
-   type="oracle.ucp.jdbc.PoolDataSource"
-   description="UCP Pool in Tomcat"
-   connectionFactoryClassName="oracle.jdbc.pool.OracleDataSource"
-   minPoolSize="5"
-   maxPoolSize="50"
-   initialPoolSize="15"
-   user="jdbcuser"
-   password="XXXXXXXXXXX"
-   url="jdbc:oracle:thin:@jdbctest_medium?TNS_ADMIN=/Users/test/ATPTesting/wallet_JDBCTEST"
-/>
-</Context>
+S
 
 
-3. Tomcat 시작 및 서블릿 호출
-Tomcat 서버를 시작하고 http://lcoalhost:8080/UCPCloud/UCPServlet에서 서블릿을 호출합니다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
