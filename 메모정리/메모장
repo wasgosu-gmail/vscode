@@ -18,6 +18,7 @@ oradb19cfree_tp = (description= (retry_count=20)(retry_delay=3)(address=(protoco
 oradb19cfree_tpurgent = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-seoul-1.oraclecloud.com))(connect_data=(service_name=yh0olybn5pqce4n_oradb19cfree_tpurgent.adb.oraclecloud.com))(security=(ssl_server_cert_dn="CN=adb.ap-seoul-1.oraclecloud.com, OU=Oracle ADB SEOUL, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
 
 
+
 # 참고자료
 https://www.oracle.com/database/technologies/java-connectivity-to-atp.html#Tomcat_WLS-tab
 
