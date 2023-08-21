@@ -1,0 +1,900 @@
+우체국 SR정리(SR #3-33677605231)_20230728
+
+Oracle Support Portal
+
+Tools 
+Jung Hyun
+Help
+2
+Substatus:
+Resp Due:
+Customer Working
+Wednesday (August 2nd)
+3-33677605231 - Oracle WebLogic Server 14.1.1.0.0
+Welogic 서버 다중 인스턴스 구성 중 특정 인스턴스에서 Connection 생
+Details
+Activity (40)
+Print this SR Refresh this SR
+Sort by: Newest activities first using Updated field UpdatedAll shown
+Search activity text
+ViewAll | My Settings | ODM | Action Plan | Sev1 | Bkgd. 
+Click to Expand. Right-click for more commands.	
+Email - Outbound
+Email To
+----------------
+skeuni@penta.co.kr ,
+
+Email Subject
+--------------------------
+SR #3-33677605231: Welogic 서버 다중 인스턴스 구성 중 특정 인스턴스에서 Connection 생
+
+Email Body
+--------------------
+안녕하십니까.
+Global Customer Support입니다.
+
+해당 SR에 대하여 업데이트가 있습니다. My Oracle Support (https://support.oracle.com)의 서비스 요청 탭에서 SR을 확인하시기 바랍니다.
+
+감사합니다.
+
+알림: 본 메일은 발신 전용으로 회신되지 않습니다.
+ 
+4 days ago
+Click to Collapse. Right-click for more commands.	
+Notes
+안녕하세요?
+
+본 SR에 대하여 변동사항이나, 관련 필요한 사항이 있으십니까?
+있으시다면 SR 업데이트 부탁드립니다.
+
+감사합니다.
+ 
+4 days ago
+Mon. Jul 24 4:02pm
+Click to Expand. Right-click for more commands.	
+Email - Outbound
+Email To
+----------------
+skeuni@penta.co.kr ,
+
+Email Subject
+--------------------------
+SR #3-33677605231: Welogic 서버 다중 인스턴스 구성 중 특정 인스턴스에서 Connection 생
+
+Email Body
+--------------------
+안녕하십니까.
+Global Customer Support입니다.
+
+해당 SR에 대하여 업데이트가 있습니다. My Oracle Support (https://support.oracle.com)의 서비스 요청 탭에서 SR을 확인하시기 바랍니다.
+
+감사합니다.
+
+알림: 본 메일은 발신 전용으로 회신되지 않습니다.
+ 
+9 days ago
+Click to Collapse. Right-click for more commands.	
+Notes
+안녕하세요?
+
+모든 인스턴스는 MDS로 배포되어 있고, MDS는 DB#1,DB#2 페일오버 구성으로 동일하게 설정되었음을 확인하였습니다.
+현재로서 가능성 및 추후 모니터링 항목은 아래와 같습니다.
+
+(1) 해당 인스턴스 처리 건수 확인 (adgSvr11와 adgSvr12 비교)
+APM에서 2023.07.14일 08:33~08:38분 시간의 호출 건수 자료 부탁드립니다. 다른 인스턴스도 호출 건수가 동일 시간대에 호출 건수 확인 부탁드립니다.
+
+(2) Web 콘솔 데이터소스 모니터링 화면에서 아래 항목 값 비교 부탁드립니다. 인스턴스를 재기동하면 초기화 됩니다.
+Active Connections High Count (최대 활성화 연결 수)
+Current Capacity High Count (현재 최대 용량)
+Leaked Connection Count (연결 누수 수)
+
+(참고) https://docs.oracle.com/en/middleware/standalone/weblogic-server/14.1.1.0/wlach/pagehelp/JDBCjdbcdatasourcesjdbcdatasourcemonitorstatisticstitle.html
+
+------
+1. 요청하신 환경 파일 업로드(서버별)
+Attached File : JDBC_Config.zip
+
+2. Application Monitoring Tool(Jenniper)에서의 DB Connection 수를 모니터링 결과
+08:35 전후로 모든 인스턴스는 DB Connection 수(Idle)가 증가 되었지만,
+장애 난 adgSvr11, sdgSvr12 인스턴스는 증가가 없었고,
+BEA-000627 에러가 발생
+Attached File : APM(Jenniper)_DBConection_Status_20230714
+adgSvr11_yyyy_MM_dd_HH_mm.log
+datasource_yyyy_MM_dd_HH_mm.log
+
+3. 위 상황에 대한 원인 분석 요청
+------
+
+
+WebLogic 콘솔에서 실시간 모니터링이 가능합니다. MBean으로 제공하기 때문에 프로그램으로 가져올 수도 있습니다. 시스템 부하는 크지는 않습니다
+------
+4. 사전적으로 문제 또는 비활성화 된 DB Connection 정보를 획득할 수 있는 방법 및 회수하는 방법이 있는지 추가 문의
+(만약에 있다면 시스템 영향범위도 함께 답변요청)
+-----
+
+
+추가적으로 제가 통화할 수 있는 연락처(핸드폰 번호) 부탁드립니다.
+
+감사합니다.
+ 
+9 days ago
+Wed. Jul 19 2:21pm
+Click to Collapse. Right-click for more commands.	
+ODM Research
+Internal Only
+-- Search --
+
+Note: This is INTERNAL ONLY research. No action should be taken by the customer on this information. This is research only, and may NOT be applicable to your specific situation.
+
+Searched on:
+
+// TLOG STORE and inactive Connection timeout : 0
+"WEBLOGIC.JDBC.CONN.LEAK" Messages Are Logged To Datasource.log When The Datasource Is Configured As TLOG STORE (Doc ID 2440776.1)
+
+
+WebLogic Server JDBC Profiling Options (Doc ID 1665693.1)
+ 
+9 days ago
+Wed. Jul 19 1:58pm
+Click to Collapse. Right-click for more commands.	
+ODM Data Collection
+-- Log File --
+
+
+File Name or Source
+-------------------------
+datasource_yyyy_MM_dd_HH_mm.log
+
+Description
+--------------
+데이터소스 로그
+
+Relevant Information Collection
+---------------------------------------
+at weblogic.servlet.provider.ContainerSupportProviderImpl$WlsRequestExecutor.run(ContainerSupportProviderImpl.java:272)
+at weblogic.invocation.ComponentInvocationContextManager._runAs(ComponentInvocationContextManager.java:352)
+at weblogic.invocation.ComponentInvocationContextManager.runAs(ComponentInvocationContextManager.java:337)
+at weblogic.work.LivePartitionUtility.doRunWorkUnderContext(LivePartitionUtility.java:57)
+at weblogic.work.PartitionUtility.runWorkUnderContext(PartitionUtility.java:41)
+at weblogic.work.SelfTuningWorkManagerImpl.runWorkUnderContext(SelfTuningWorkManagerImpl.java:651)
+at weblogic.work.ExecuteThread.execute(ExecuteThread.java:420)
+at weblogic.work.ExecuteThread.run(ExecuteThread.java:360)
+,currentThread=Thread[[ACTIVE] ExecuteThread: '38' for queue: 'weblogic.kernel.Default (self-tuning)',5,Pooled Threads],lastUser=null,currentError=null,currentErrorTimestamp=null,JDBC4Runtime=true,supportStatementPoolable=true,needRestoreClientInfo=false,defaultClientInfo={},supportIsValid=true> <[partition-id: 0] [partition-name: DOMAIN] >
+####<PACT_ACTAPP_T01> <WEBLOGIC.JDBC.CONN.LEAK> <Fri Jul 14 08:35:52 KST 2023> <java.lang.Exception
+at weblogic.jdbc.common.internal.ConnectionEnv.setup(ConnectionEnv.java:464)
+at weblogic.common.resourcepool.ResourcePoolImpl.reserveResource(ResourcePoolImpl.java:411)
+at weblogic.jdbc.common.internal.ConnectionPool.reserve(ConnectionPool.java:610)
+at weblogic.jdbc.common.internal.ConnectionPool.reserve(ConnectionPool.java:521)
+at weblogic.jdbc.common.internal.MultiPool.searchHighAvail(MultiPool.java:595)
+at weblogic.jdbc.common.internal.MultiPool.findPool(MultiPool.java:224)
+at weblogic.jdbc.common.internal.ConnectionPoolManager.reserve(ConnectionPoolManager.java:139)
+at weblogic.jdbc.common.internal.ConnectionPoolManager.reserve(ConnectionPoolManager.java:94)
+at weblogic.jdbc.jts.Driver.newConnection(Driver.java:936)
+at weblogic.jdbc.jts.Driver.createLocalConnection(Driver.java:340)
+at weblogic.jdbc.jts.Driver.connect(Driver.java:175)
+at weblogic.jdbc.common.internal.WLDataSourceImpl.getConnectionInternal(WLDataSourceImpl.java:655)
+at weblogic.jdbc.common.internal.WLDataSourceImpl.getConnection(WLDataSourceImpl.java:611)
+at weblogic.jdbc.common.internal.WLDataSourceImpl.getConnection(WLDataSourceImpl.java:604)
+at weblogic.jdbc.common.internal.RmiDataSource.getConnection(RmiDataSource.java:108)
+at aries.runtime.tracer.JDBCConnectionTrace.getConnection(JDBCConnectionTrace.java:123)
+
+Relevance to the Issue
+---------------------------
+
+<PACT_ACTAPP_T01> <WEBLOGIC.JDBC.CONN.LEAK> <Fri Jul 14 08:35:52 KST 2023> <java.lang.Exception
+ 
+9 days ago
+Wed. Jul 19 1:54pm
+Click to Collapse. Right-click for more commands.	
+ODM Data Collection
+-- Log File --
+
+
+File Name or Source
+-------------------------
+adgSvr11_yyyy_MM_dd_HH_mm.log
+
+Description
+--------------
+adgSvr11 서버 로그
+
+Relevant Information Collection
+---------------------------------------
+
+####<7월 14, 2023 8:31:50,774 오전 KST> <Info> <Common> <pdasap01> <adgSvr11> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<anonymous>> <BEA1-1E27D9197864AA801D6D> <00606Qw_2RW0zkp5sRc9yX005rIP0002Ao> <1689291110774> <[severity-value: 64] [rid: 0:1] > <BEA-000627> <Reached maximum capacity of pool "PACT_ACTAPP_T01", making "0" new resource instances instead of "1".>
+####<7월 14, 2023 8:31:50,775 오전 KST> <Info> <Common> <pdasap01> <adgSvr11> <[ACTIVE] ExecuteThread: '35' for queue: 'weblogic.kernel.Default (self-tuning)'> <<anonymous>> <BEA1-1E29D9197864AA801D6D> <00606Qw_2dC0zkp5sRXBiX00283^00023w> <1689291110775> <[severity-value: 64] [rid: 0:1] > <BEA-000627> <Reached maximum capacity of pool "PACT_ACTAPP_T01", making "0" new resource instances instead of "1".>
+####<7월 14, 2023 8:31:50,780 오전 KST> <Info> <Common> <pdasap01> <adgSvr11> <[ACTIVE] ExecuteThread: '44' for queue: 'weblogic.kernel.Default (self-tuning)'> <<anonymous>> <BEA1-1E2AD9197864AA801D6D> <00606Qw_4ZX0zkp5sRc9yX006GI_0001Z5> <1689291110780> <[severity-value: 64] [rid: 0:1] > <BEA-000627> <Reached maximum capacity of pool "PACT_ACTAPP_T01", making "0" new resource instances instead of "1".>
+
+......
+####<7월 14, 2023 9:26:17,030 오전 KST> <Info> <Common> <pdasap01> <adgSvr11> <[ACTIVE] ExecuteThread: '34' for queue: 'weblogic.kernel.Default (self-tuning)'> <<anonymous>> <BEA1-68A29E00F731AA801D6D> <00606TGirL20zkp5sRc9yX006Z5V0001Hn> <1689294377030> <[severity-value: 64] [rid: 0:1] > <BEA-000627> <Reached maximum capacity of pool "PACT_ACTAPP_T01", making "0" new resource instances instead of "1".>
+####<7월 14, 2023 9:26:17,142 오전 KST> <Info> <Common> <pdasap01> <adgSvr11> <[ACTIVE] ExecuteThread: '20' for queue: 'weblogic.kernel.Default (self-tuning)'> <<anonymous>> <BEA1-68A59E00F731AA801D6D> <00606TGY3Lj0zkp5sR^AyX000oJu0001oL> <1689294377142> <[severity-value: 64] [rid: 0:1] > <BEA-000627> <Reached maximum capacity of pool "PACT_ACTAPP_T01", making "0" new resource instances instead of "1".>
+####<7월 14, 2023 9:26:17,150 오전 KST> <Info> <Common> <pdasap01> <adgSvr11> <[ACTIVE] ExecuteThread: '30' for queue: 'weblogic.kernel.Default (self-tuning)'> <<anonymous>> <BEA1-68A69E00F731AA801D6D> <00606TG^QNm0zkp5sRWByX009Agk0002Hx> <1689294377150> <[severity-value: 64] [rid: 0:1] > <BEA-000627> <Reached maximum capacity of pool "PACT_ACTAPP_T01", making "0" new resource instances instead of "1".>
+
+
+Relevance to the Issue
+---------------------------
+2023.07.14 08:31 ~ 09:26 분까지 <BEA-000627> <Reached maximum capacity of pool "PACT_ACTAPP_T01", making "0" new resource instances instead of "1".> 발생
+ 
+9 days ago
+Wed. Jul 19 1:15pm
+Click to Collapse. Right-click for more commands.	
+ODM Data Collection
+-- Script Output --
+
+
+File Name or Source
+-------------------------
+APM_Jenniper__DBConection_Status_20230714.xlsx
+
+Description
+--------------
+결과 파일
+
+Relevant Information Collection
+---------------------------------------
+
+(1) SR에서 DB 연결 풀이 Full 발생한 인스턴스 DS 정보
+
+#### ADG11
+평균 Idle Connection (jndi/PACT_ACTAPP_T | ADG11) : 16
+최대 Active Connection (jndi/PACT_ACTAPP_T | ADG11) : 1 ~ 4
+
+#### ADG21
+평균 Idle Connection (jndi/PACT_ACTAPP_T | ADG11) : 17 ~ 20
+최대 Active Connection (jndi/PACT_ACTAPP_T | ADG11) : 1 ~ 5
+
+
+(2) 정상 인스턴스 DS 정보
+
+#### ADG12
+평균 Idle Connection (jndi/PACT_ACTAPP_T | ADG11) : 20에서 60으로 증가
+최대 Active Connection (jndi/PACT_ACTAPP_T | ADG11) : 14에서 2~3으로 감소
+
+
+Relevance to the Issue
+---------------------------
+* SR에서는 ADG11, ADG21이 DB 연결 풀이 Full 났다고 함
+* 엑셀 파일에서 ADG41 데이터도 ADG11, ADG21과 유사함
+ 
+9 days ago
+Wed. Jul 19 1:09pm
+Click to Collapse. Right-click for more commands.	
+ODM Data Collection
+-- Config File --
+
+
+File Name or Source
+-------------------------
+PACT_ACTAPP_T02-2174-jdbc.xml
+
+Description
+--------------
+JDBC 설정 파일 #2
+
+Relevant Information Collection
+---------------------------------------
+
+<url>jdbc:oracle:thin:@//pactdb02-dbvip.pobis.kr:11521/PACTDB</url>
+
+<initial-capacity>2</initial-capacity>
+<max-capacity>70</max-capacity>
+<min-capacity>2</min-capacity>
+<shrink-frequency-seconds>400</shrink-frequency-seconds>
+<highest-num-waiters>2147483647</highest-num-waiters>
+<connection-creation-retry-frequency-seconds>20</connection-creation-retry-frequency-seconds>
+<connection-reserve-timeout-seconds>20</connection-reserve-timeout-seconds>
+<test-frequency-seconds>120</test-frequency-seconds>
+<test-connections-on-reserve>true</test-connections-on-reserve>
+
+
+Relevance to the Issue
+---------------------------
+pactdb02-dbvip.pobis.kr:11521/PACTDB // 접속
+ 
+9 days ago
+Wed. Jul 19 12:54pm
+Click to Collapse. Right-click for more commands.	
+ODM Data Collection
+-- Config File --
+
+
+File Name or Source
+-------------------------
+PACT_ACTAPP_T01-2174-jdbc.xml
+
+Description
+--------------
+JDBC 설정 파일 #1
+
+Relevant Information Collection
+---------------------------------------
+
+<url>jdbc:oracle:thin:@//pactdb01-dbvip.pobis.kr:11521/PACTDB</url>
+
+<initial-capacity>15</initial-capacity>
+<max-capacity>70</max-capacity>
+<min-capacity>15</min-capacity>
+<shrink-frequency-seconds>400</shrink-frequency-seconds>
+<highest-num-waiters>2147483647</highest-num-waiters>
+<connection-creation-retry-frequency-seconds>20</connection-creation-retry-frequency-seconds>
+<connection-reserve-timeout-seconds>20</connection-reserve-timeout-seconds>
+<test-frequency-seconds>120</test-frequency-seconds>
+<test-connections-on-reserve>true</test-connections-on-reserve>
+
+
+Relevance to the Issue
+---------------------------
+pactdb01-dbvip.pobis.kr:11521/PACTDB // 접속
+ 
+9 days ago
+Wed. Jul 19 12:53pm
+Click to Collapse. Right-click for more commands.	
+ODM Data Collection
+-- Config File --
+
+
+File Name or Source
+-------------------------
+PACT_ACTAPP_T_MDS-4850-jdbc.xml
+
+Description
+--------------
+멀티데이터소스 (pdasap01 ~ pdasap07) 동일함
+
+Relevant Information Collection
+---------------------------------------
+<name>PACT_ACTAPP_T_MDS</name>
+<datasource-type>MDS</datasource-type>
+<jdbc-data-source-params>
+<jndi-name>jndi/PACT_ACTAPP_T</jndi-name>
+<algorithm-type>Failover</algorithm-type>
+<data-source-list>PACT_ACTAPP_T01,PACT_ACTAPP_T02</data-source-list>
+
+Relevance to the Issue
+---------------------------
+PACT_ACTAPP_T01,PACT_ACTAPP_T02 // 모두 DB#1, DB#2 (페일오버)
+ 
+9 days ago
+Wed. Jul 19 12:49pm
+Click to Collapse. Right-click for more commands.	
+Notes
+네, 확인 후 업데이트 예정입니다.
+ 
+9 days ago
+Wed. Jul 19 12:28pm
+Click to Collapse. Right-click for more commands.	
+Notes
+Internal Only
+Automation Activity - Automated Troubleshooting has completed. 
+9 days ago
+Wed. Jul 19 11:28am
+Click to Collapse. Right-click for more commands.	
+Service Automation Audit
+Internal Only
+Automation Activity - A Poirot Guided Resolution Consultation c_24068225 has been initiated against this SR for instance pprod for AUTO_POIROT (AUTO_POIROT) 
+9 days ago
+Wed. Jul 19 11:28am
+Click to Collapse. Right-click for more commands.	
+Update from Customer
+Update from Customer - 1. 해당 장애 시 조시상황
+BEA-000627이 발생된 adgSvr11, adgSvr21 2개의 인스턴스만 재기동 후 정상처리 확인 
+9 days ago
+Wed. Jul 19 11:06am
+Click to Collapse. Right-click for more commands.	
+Update from Customer
+Update from Customer - 1. 요청하신 환경 파일 업로드(서버별)
+Attached File : JDBC_Config.zip
+
+2. Application Monitoring Tool(Jenniper)에서의 DB Connection 수를 모니터링 결과
+08:35 전후로 모든 인스턴스는 DB Connection 수(Idle)가 증가 되었지만,
+장애 난 adgSvr11, sdgSvr12 인스턴스는 증가가 없었고,
+BEA-000627 에러가 발생
+Attached File : APM(Jenniper)_DBConection_Status_20230714
+adgSvr11_yyyy_MM_dd_HH_mm.log
+datasource_yyyy_MM_dd_HH_mm.log
+
+3. 위 상황에 대한 원인 분석 요청
+
+4. 사전적으로 문제 또는 비활성화 된 DB Connection 정보를 획득할 수 있는 방법 및 회수하는 방법이 있는지 추가 문의
+(만약에 있다면 시스템 영향범위도 함께 답변요청) 
+9 days ago
+Wed. Jul 19 11:03am
+Click to Collapse. Right-click for more commands.	
+Update from Customer
+Upload to TDS successful for the file APM_Jenniper__DBConection_Status_20230714.xlsx. 
+9 days ago
+Wed. Jul 19 10:53am
+Click to Collapse. Right-click for more commands.	
+Notes
+네, 확인 후 업데이트 예정입니다.
+ 
+9 days ago
+Wed. Jul 19 10:51am
+Click to Collapse. Right-click for more commands.	
+Update from Customer
+Upload to TDS successful for the file adgSvr11_yyyy_MM_dd_HH_mm.log. 
+9 days ago
+Wed. Jul 19 10:48am
+Click to Collapse. Right-click for more commands.	
+Update from Customer
+Upload to TDS successful for the file datasource_yyyy_MM_dd_HH_mm.log. 
+9 days ago
+Wed. Jul 19 10:47am
+Click to Collapse. Right-click for more commands.	
+Update from Customer
+Upload to TDS successful for the file JDBC_Config.zip. 
+9 days ago
+Wed. Jul 19 10:47am
+Click to Collapse. Right-click for more commands.	
+Notes
+Automated Diagnosis - Email To
+----------------
+skeuni@penta.co.kr
+
+Email Subject
+------------------------------
+SR #3-33677605231: Welogic 서버 다중 인스턴스 구성 중 특정 인스턴스에서 Connection 생
+
+Email Body
+----------------------
+Hello Byungkeun,
+
+This is a reminder requesting upload of diagnostic data. Please refer to action plan instructions previously posted in the Service Request.
+ 
+9 days ago
+Wed. Jul 19 9:15am
+Click to Collapse. Right-click for more commands.	
+Notes
+Automated Diagnosis - Email To
+----------------
+skeuni@penta.co.kr
+
+Email Subject
+------------------------------
+SR #3-33677605231: Welogic 서버 다중 인스턴스 구성 중 특정 인스턴스에서 Connection 생
+
+Email Body
+----------------------
+Hello Byungkeun,
+
+This is a reminder requesting upload of diagnostic data. Please refer to action plan instructions previously posted in the Service Request.
+ 
+10 days ago
+Tue. Jul 18 9:11am
+Click to Expand. Right-click for more commands.	
+Email - Outbound
+Email To
+----------------
+skeuni@penta.co.kr ,
+
+Email Subject
+--------------------------
+SR #3-33677605231: Welogic 서버 다중 인스턴스 구성 중 특정 인스턴스에서 Connection 생
+
+Email Body
+--------------------
+안녕하십니까.
+Global Customer Support입니다.
+
+해당 SR에 대하여 업데이트가 있습니다. My Oracle Support (https://support.oracle.com)의 서비스 요청 탭에서 SR을 확인하시기 바랍니다.
+
+감사합니다.
+
+알림: 본 메일은 발신 전용으로 회신되지 않습니다.
+ 
+11 days ago
+Click to Collapse. Right-click for more commands.	
+ODM Action Plan
+--------------------UPDATE ACTION PLAN DETAILS BELOW---------------------
+Owner
+------------------------------------------------------
+Byungkeun
+
+Follow-up
+------------------------------------------------------
+I will check back in with you by 07/19/23 9:08:48 AM unless I hear from you sooner.
+
+ACTION PLAN
+-------------------------------------------------------
+안녕하세요?
+
+SR을 처리하기 위해 질문 및 자료를 요청드립니다.
+
+1. config.xml 업로드 부탁드립니다. 데이터소스 타겟팅 정보를 확인하기 위함입니다.
+
+2. 데이터소스가 Full 된 jdbc 관련 xml 파일을 업로드 부탁드립니다.
+
+3. 자동해소된것인지요? Data Connection Full 을 해소하기 위해 어떠한 조치를 하셨는지요?
+
+감사합니다
+ 
+11 days ago
+Mon. Jul 17 9:14am
+Click to Collapse. Right-click for more commands.	
+ODM Issue Verification
+description 내용을 통해 문의 사항 확인:
+
+SCREEN SHOTS
+-----------------------
+Filename =
+See the following error:
+
+
+총 8개의 인스턴스 중 1,2번 인스턴스에서만 Data Connection Full 현상 발생.
+ 
+11 days ago
+Mon. Jul 17 9:10am
+Click to Collapse. Right-click for more commands.	
+ODM Issue Clarification
+On : 14.1.1.0.0 version, WLS-Config (non-component)
+
+ACTUAL BEHAVIOR
+---------------
+Welogic 서버 다중 인스턴스 구성 중 특정 인스턴스에서 Connection 생
+
+다중 인스턴스 구성 중 특정 인스턴스에서만 Data Connection Full이 발생되어 서비스 불가.
+
+총 8개의 인스턴스 중 1,2번 인스턴스에서만 Data Connection Full 현상 발생.
+
+인스턴스 구성은 8대 모두 동일하게 구성되어 있음.
+
+인스턴스 재기동 시 Data Connection Full 현상 해소 되며, 서비스 정상 작동 함.
+
+
+EXPECTED BEHAVIOR
+-----------------------
+1,2 번 인스턴스에서 Data Connection Full 현상 발생하지 않아야 함
+
+
+BUSINESS IMPACT
+-----------------------
+일부 서비스 지연
+ 
+11 days ago
+Mon. Jul 17 9:10am
+Click to Collapse. Right-click for more commands.	
+Notes
+안녕하십니까? 오라클 GCS 김영익 입니다.
+
+고객님께서 등록하신 SR(Service Request)은 현재 접수되었으며, Review 중입니다.
+내용을 확인 후 SR Update 또는 전화를 드리도록 하겠습니다.
+
+저의 근무 시간은 [ 월~금 09:00~18:00 KST ] 입니다.
+
+위의 시간 이외에는 SR 담당자와 전화 연결이 되지 않으므로
+전달하실 내용을 SR 에 업데이트를 남겨주시면 확인후 연락을 드리겠습니다.
+
+감사합니다.
+Global Customer Support
+ 
+11 days ago
+Mon. Jul 17 9:09am
+Click to Collapse. Right-click for more commands.	
+Information
+My Oracle Support 문서 & SR 활용 범위
+=====================================
+
+My Oracle Support (이하 MOS)에서 제공하고 있는 모든 문서와 SR은 오라클의 공식적인 기술문서입니다.
+고객님의 환경에서 발생한 문제에 대하여, 오라클의 공식적인 견해가
+필요한 경우에는 고객님의 문제 분석에 사용된 SR을 활용하실 수 있습니다.
+
+24x7 한국어 지원
+================
+2016년 10월 15일부터 오라클 미들웨어 제품에 대한 정규 업무 시간 이후의 한국어 기술 지원 정책이 변경됩니다.
+긴급한 기술 지원 요청에 대하여 아래의 요건이 만족하는 경우 24x7 한국어 지원을 제공합니다.
+
+1. 한국어 지원 가능 제품
+Oracle WebLogic Server
+Oracle JRockit
+JDBC
+Oracle iPlanet Web Server
+Oracle Coherence
+Oracle HTTP Server
+Tuxedo
+JCS (Java Cloud Service)
+
+2. 정규 업무 시간 외 한국어 기술 지원 가능 시간
+토요일 오전 9시 ~ 다음 월요일 오전 9시
+24x7 활성화 및 SR언어를 한국어 된 “중요도 1 SR”을 생성 및 업데이트 후, 무료 전화 +82.1588.8501로 연락
+3. 이외 평일 정규 업무 시간 이후 또는 위에서 언급되지 않은 공휴일 및 주말시간
+긴급한 “중요도 1 SR”에 대한 기술 지원은 영어권 엔지니어를 통해 지원
+24x7 활성화 및 SR언어를 "English" 된 “중요도 1 SR”을 생성 및 업데이트 또는 영어 무료 전화 +82.1588.8501로 연락
+4. 고객 업무 운용에 심각한 문제가 발생한 경우 (Business Impact 제공 필요)
+5. 고객사의 24*7 대응 시 3시간 동안 3회 이상 전화 연결이 되지 않는 경우, "평일 업무 시간 지원"으로 전환
+
+
+Global Customer Support (이하 GCS) 매니저 협조/연결 요청
+=========================================================
+1.Service Request (이하 SR) 진행 관련하여 Manager와 협의가 필요하신 경우,
+다음의 두가지 방법을 이용할 수 있습니다.
+
+1. SR에 매니저 연결 요청 Update
+
+2. GCS Korea 대표 전화를 이용한 방법
+1). 1588-8501 전화
+2). 1번 '한국어 지원' 선택
+3). 2번 '새로운 서비스를 요청' 선택
+4). Product 선택 (Engineered system 은 1번, Software 문의는 2 번)
+5). 2번 My Oracle Support, 고객번호, 계약 관련, 제품 요청 문의 선택
+6). SR 번호를 알려 주시고 요청사항 남겨 주시면 연락 드림.
+
+GCS 전화 연결 방법
+==================
+* 정규 업무 시간 내 (평일 오전 9:00 ~ 오후 6:00) : SR을 진행하는 담당 엔지니어와 직접 통화를 원하는 경우
+
+
+* 정규 업무 시간 이후(토요일 오전9시~ 다음주 월요일 오전 9시) : 긴급한 기술 지원요청을 원하시는 경우, '새로운 기술 지원 요청' 을 선택
+1. 1588-8501 전화
+2. 1번 '한국어 지원' 선택
+3. 2번 '새로운 서비스 요청' 선택
+4. 제품 선택 (Engineered system 문의 : 1번, Software 문의 : 2)
+5. 1번 '기술 지원 관련 문의' 선택
+6. 고객번호 + # 입력
+7. 긴급한 기술 지원 요청 1 번 선택
+
+** 주의 : 정규 업무 시간 이후에는 '이미 등록된 서비스 요청' 메뉴를 선택 시 담당엔지니어와 연결되지 않습니다 **
+
+기술지원 문서
+=====================
+오라클 미들웨어 기술지원 팀은 한국 고객에게 더 나은 지원 서비스를 제공하기 위해 노력하고 있습니다.
+
+오라클 미들웨어 기술지원 뉴스레터 - Doc ID 2301409.1
+미들웨어 한글문서 리스트 - Oracle Middleware Index (Doc ID 2301251.1)
+미들웨어 한글문서 리스트 - Oracle Weblogic Server (Doc ID 2301250.1)
+
+
+감사합니다.
+Global Customer Support.
+ 
+11 days ago
+Mon. Jul 17 9:09am
+Click to Collapse. Right-click for more commands.	
+Notes
+Automated Diagnosis - Email To
+----------------
+skeuni@penta.co.kr
+
+Email Subject
+------------------------------
+SR #3-33677605231: Welogic 서버 다중 인스턴스 구성 중 특정 인스턴스에서 Connection 생
+
+Email Body
+----------------------
+Hello Byungkeun,
+
+File Validation Message:
+We have added an action plan to the SR giving details of files/evidence to collect. If the request is not clear, or we have mis-understood your issue, please update the SR.
+
+ 
+11 days ago
+Mon. Jul 17 9:08am
+Click to Collapse. Right-click for more commands.	
+ODM Action Plan
+Hi Byungkeun,
+
+Please provide the following to help us resolve your issue:
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Recommended: RDA - Collect and package all data with one command!
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Getting Started
+---------------
+
+- Locate the RDA for your release:
+
+14.1.1, 12.2.x, 12.1.3, 12.1.2 ==> ORACLE_HOME/oracle_common/rda
+10.3.1-10.3.6 ==> MW_HOME/oracle_common/rda
+12.1.1, 10.3, 10.0, 9.1, 8.1 ==> Go to "Using RDA for first time" in Doc ID 1498376.1
+
+- To upgrade existing copies of RDA to the latest version, go to "Keeping RDA up to date" in Doc ID 1498376.1
+
+Running RDA
+-----------
+
+- Log onto the host machine experiencing the issue as the Operating System user that owns the files to be collected.
+- If your issue involves multiple processes distributed across different hosts, follow the instructions for each host machine.
+
+Setup and run using the command:
+
+Linux/Unix: rda.sh -s wls_issue -p WebLogicServer
+Windows: rda.cmd -s wls_issue -p WebLogicServer
+
+Setup Prompts:
+
+- Select the domain home and server(s) related to the issue.
+- Select 'N' if you see the question "Do you want RDA to configure OCM now".
+- Admin user credentials are requested for a WLST online AdminServer connection.
+- If the AdminServer or password is unavailable, keep entering an invalid password, RDA will bypass and proceed without using WLST online.
+
+- Attach the package created by RDA to the SR.
+
+++++++++++++++++++++
+Minimum Requirements
+++++++++++++++++++++
+
+If you are unable to provide an RDA, please upload the following to help diagnose your issue:
+
+Server logs and configuration
+
+- DOMAIN_HOME/servers/[servername]/logs/[servername].log [servername].out
+- DOMAIN_HOME/config/config.xml
+
+Advanced issues may require multiple items to help troubleshoot your issue. RDA can collect everything at once!
+
+Reference:
+SRDC - Collect WebLogic Server Diagnostic Data - RDA (Doc ID 1922865.1)
+ 
+11 days ago
+Mon. Jul 17 9:08am
+Click to Collapse. Right-click for more commands.	
+Information
+Automated Update - This SR is assigned and is being monitored by an automated process which will shortly post an initial Action Plan into the SR.
+If files are requested, please make every effort to upload them as this will expedite our troubleshooting of your issue.
+For more information about automatic file validation please review Doc ID 1954911.1 My Oracle Support- Fusion Middleware, Hyperion and Business Intelligence Automated File Validation.
+ 
+11 days ago
+Mon. Jul 17 9:08am
+Click to Collapse. Right-click for more commands.	
+Information
+Internal Only
+Automation Activity - ***** Automated Troubleshooting: KM Search *****
+
+Automation performed a KM search using the SR Summary, Error Codes and did not find any related KM documents.
+
+ 
+11 days ago
+Mon. Jul 17 9:06am
+Click to Collapse. Right-click for more commands.	
+Service Automation Audit
+Internal Only
+Diagnostic Report - Report Data - Diagnostic Report received from utility: 'AIS_PREDICTOR_AUTODX'
+sr: 3-33677605231
+dx_version: 1.0
+dx_code: AIS_PREDICTOR_AUTODX
+job_id: dx_1094332_1689552383234
+status: ok
+consultation: 24030254
+file_path: AIS=pensar_predictor v2023.03.24
+rsr_ec: EDA-Alarm-InvokeDX
+event_code: New_SR_AIS-Revert
+dx_date: 1689552386 
+11 days ago
+Mon. Jul 17 9:06am
+Click to Collapse. Right-click for more commands.	
+Information
+Internal Only
+Automation Activity - ***** Automated Troubleshooting: SR Similarity *****
+
+SR similarity is a new machine learning based prediction of probable related SRs based on recent SR data. Follow the URL for a list of SRs that may assist in your research. If you determine that one or more of the SRs below are of value to your SR please use the Related SR feature in the left pane and classify the item as Assisted SR. If they do not assist no action is required.
+
+Full report: https://pensar-prod.appoci.oraclecorp.com/ui?ojr=SimilarSR&search_key=3-33677605231 
+11 days ago
+Mon. Jul 17 9:06am
+Click to Collapse. Right-click for more commands.	
+Service Automation Audit
+Internal Only
+key=sr_info s=q sr=3-28851692901,3-32877113341,3-30452200901,3-23670920861,3-25494724681, v=1 - Pensar analytics reported in 'description'. 
+11 days ago
+Mon. Jul 17 9:06am
+Click to Collapse. Right-click for more commands.	
+Service Automation Audit
+Internal Only
+Diagnostic Report - Report Data - Diagnostic Report received from utility: 'ORACLE_SAD_ACS_ANNOTATE_SR'
+sr: 3-33677605231
+dx_version: 1.0
+dx_code: ORACLE_SAD_ACS_ANNOTATE_SR
+job_id: dx_1094332_1689552383234
+status: ok
+file_path: SR Annotation Update for MW EDA
+rsr_ec: NULL
+event_code: NULL
+dx_date: 1689552391232 
+11 days ago
+Mon. Jul 17 9:06am
+Click to Collapse. Right-click for more commands.	
+Service Automation Audit
+Internal Only
+Diagnostic Report - Report Data - Diagnostic Report received from utility: 'EDA_EVT_HANDLER_AUTODX'
+sr: 3-33677605231
+dx_version: 1.0
+dx_code: EDA_EVT_HANDLER_AUTODX
+job_id: dx_1001579_1689552247564
+status: ok
+error:
+consultation: 24030245
+product: Oracle WebLogic Server
+serial:
+file_path: DBUTIL_VERSION=Release20230710/Release20230711X DX_RUNENV=PROD
+confidence: 99
+rsr_ec: EDA-Alarm-InvokeDX
+event_code: New_SR_01-RevertSubstatus
+dx_date: 1689552254 
+11 days ago
+Mon. Jul 17 9:04am
+Click to Collapse. Right-click for more commands.	
+Customer Problem Description
+Customer Problem Description
+---------------------------------------------------
+
+Problem Summary
+---------------------------------------------------
+Welogic 서버 다중 인스턴스 구성 중 특정 인스턴스에서 Connection 생
+
+Problem Description
+---------------------------------------------------
+다중 인스턴스 구성 중 특정 인스턴스에서만 Data Connection Full이 발생되어 서비스 불가.
+
+총 8개의 인스턴스 중 1,2번 인스턴스에서만 Data Connection Full 현상 발생.
+
+인스턴스 구성은 8대 모두 동일하게 구성되어 있음.
+
+인스턴스 재기동 시 Data Connection Full 현상 해소 되며, 서비스 정상 작동 함.
+
+Error Codes
+---------------------------------------------------
+
+
+Problem Category/Subcategory
+---------------------------------------------------
+2. Configuration and Administration/High Availability
+
+Uploaded Files
+---------------------------------------------------
+
+
+Global Problem Definition Details
+---------------------------------------------------
+Question: Select the area that best associates to your issue or question:
+Answer: Load Balancing and Clustering
+
+Question: Your issue is about:
+Answer: Load Balancing
+
+Question: Check if the Load Balancing issue matches any of the following:
+Answer: Configuring (mod_wl_ohs) with Oracle HTTP Server and WebLogic
+
+Diagnosis: Based on your answers, we recommend this document to troubleshoot your issue:
+
+
+Read Note:1316142.1#aref_section23 How To Configure mod_wl_ohs with Oracle HTTP Server and Oracle WebLogic Server
+
+
+If the above solution does not resolve your issue, follow the steps detailed in the document below:
+
+
+Read Note:1922865.1#aref_section11 SRDC - Collect WebLogic Server Diagnostic Data - RDA
+
+
+We recommend saving this session as a draft Service Request (SR) while investigating further. If you need further help, proceed with the next step to upload the requested data and submit an SR.
+
+
+ 
+14 days ago
+Fri. Jul 14 7:11pm
+Click to Collapse. Right-click for more commands.	
+Information
+Internal Only
+Recent Searches: Last Searches (max 5) performed by user on My Oracle Support
+============================================================================================
+2023-04-27 00:33:41.0 - 2452876.1
+2023-04-27 00:19:22.0 - 2539889.1
+2023-04-26 07:43:30.0 - 2000278.1
+2023-04-19 13:31:47.0 - lock timeout logminer
+2023-04-19 13:31:24.0 - lock timeout oracle
+
+Recent KM Articles: Last Articles (max 5) viewed by user in My Oracle Support
+============================================================================================
+2023-07-14 10:10:12.0 - Doc ID 1316142.1 How to Configure mod_wl_ohs with Oracle HTTP Server and Oracle WebLogic Server
+2023-07-14 10:02:05.0 - Doc ID 1324658.1 How to Re-Use a Previously-Created JDBC or File Store
+2023-07-14 09:34:37.0 - Doc ID 1970437.1 How To Update the JDBC and UCP Drivers Bundled with WebLogic Server
+2023-07-04 09:00:14.0 - Doc ID 19202304.9 Oracle Database 19c Release Update & Release Update Revision April 2023 Known Issues
+2023-07-04 01:18:27.0 - Doc ID 2668780.1 Requirements for Installing Oracle Database/Client 19c on OL8 or RHEL8 64-bit (x86-64)
+
+KM Articles: Top solutions (max 10) shown during the My Oracle Support SR create process
+============================================================================================
+Customer opted out of KM Solution step. No search was performed. 
+14 days ago
+Fri. Jul 14 7:11pm
+About OracleContact UsLegal NoticesTerms Of UseYour Privacy Rights
+Copyright ? 2015 Oracle and/or its affiliates. All rights reserved.

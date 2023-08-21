@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: customer
+  datasource:
+    username: 'customer'
+    url: jdbc:oracle:thin:@//130.162.157.133:1521/pdb1
+    password: 'Welcome123'
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+        format-sql: 'true'
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+
+    

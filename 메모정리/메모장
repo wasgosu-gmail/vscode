@@ -1,5 +1,134 @@
 
-## boot camp 내용 발표 하기 
+
+## 준환이가 만든 git 토큰
+토큰이름  : wasgosu-msa-jenkins-token
+토큰값 : glpat-SHapdRsvezdsFeNay8rZ
+
+
+
+## git-wasgosu
+토큰이름 : githup_jenkins
+토큰값 : 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
+
+
+## 젠킨스 
+[root@wls-test-wasgosu ~]# ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): ^Z
+[4]+  Stopped                 ssh-keygen
+
+[root@wls-test-wasgosu ~]# cat /var/lib/jenkins/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDPzev+ByM2sT6xBbwglZ201mRuB2nQzZ9fwPS5ThpzroQJD1OsonlWTQDeYkA91B0FokMo3/DB7drgDAU0wLMqHX1wZCf9dlw2aapiAiiXvsd2FiIVbGTLM8ZSL3pHsROiz/NMWN4wViaE9gINu33OiAk//LDUg5RHX/nPFBt0agDbbzYXJ1yGrz3aOu2Hh957bY2g6fvgv294vnb1DXIK9rnvzroRslBYRv8Gg6v2KmclKe6dO33NuWpMxxLglHWxpvZbMWyyYPy+yHALkvUarf9sioA8wFwimX5JA9XYyz7yffyGV6wNHZ6SUreRIBhcWyb4NHV76O/TzavViS2eLDLNL1w5zzMHY2//9GvfcEmH5TILHP1/5mmRqkakGL5WC7PHEQq2WuTf5AugrBvjVJQtaZVrnXGZYr6RPq4pn6EGxnP0vCj3LMXGpWplBlCpYxdQPwL3EN/3p6JMhftqWK596BQ+DPhnEetFCVHubKH6vyY3zMw3B88n0D/yYYc= jenkins@wls-test-wasgosu
+
+
+
+
+
+
+# 문의사항
+1. K8s를 통한 오포스케일링 (기능 궁금증)
+2. 웹로직 오토스케일링 구현 (갯수 제한)
+3. CI/CD 배포 방식 구현 (jenkins)
+4. 오토스케일링 과 CI/CD는 함께 구현할 수 없음
+
+
+# 진행방향
+- 클라우드 네이티브 환경에서 개발할 것이다. 
+- 차세대 프로젝트는 MSA 환경으로 진행해라.
+- 오라클이 MSA에 장점을 발표해야 한다. 
+- MSA에 대한 컨설팅은 충분하므로 가르킬 필요는 없다. 
+- SI 업체가 MSA에 익숙하지 못하므로 오라클에 문의할때 오라클의 강점이 무엇인지 정리필요
+- 컨테이너와 쿠버네티스에 우리가 할만한 장점이 무엇인지 정리.. (DB에 대해 트랜잭션 관리)
+- 서비스 별로 DB가 도는 아키텍처 (DB분리)
+
+- CI/CD는 배포와 경험 차이.. 여러가지 트랜젝션을 처리해야 하는 패턴들
+- CD/CD 기술.. 하나의 서비스가 많으면 컨테이너에 올려두고 k8s로 scaleout 하고 보여주는 것
+- db에 들어가는것 까지 보여주고 싶다. 
+- k8s의 노드 증설.. cpu에 따른 증설되는 모습
+  어떤 툴이 deploy 되는 과정..
+  이런 종류의 과정을 데모로 만들어 주면 좋겠다. 
+
+
+
+
+## 요구사항
+- 트랜잭션이 걸리면 좀 많이 복잡해진다. 
+- 모델을 만들어 주는 것.
+  get, post을 할수 있는 모델을 만들어 주길 바랬다. 
+- DB 엔지니어들이 CI/CD가 일어나는지 
+  이런식으로 소스가 변화되는지, MSA에 대한 장점.. 등에 설명해주면 좋겠다. 
+
+
+- 보여줄 수 있을 데모가 필요하다. 
+- CI/CD 가 프로그램을 바꿨을때 한개는 잘 돌아가고, 다른쪽을 바꾸는 것을 보여주면 좋겠다. 
+- 클라우드 환경에서 CI/CD 로 해서 데모가 바뀐다. 
+- deploy 되는 부분을 보여주는게 필요하다. 
+- CI/CD를 보여달라. DB랑 전혀 상관없는 was 프로그램만 바꾸고 was가 oracledb를 쓰고 그런 것을 만들어 달라. 
+  이런것들까지 시뮬레이션을 해야한다. 
+  was에 간단한 소스만 넣고 deploy를 하는것을 원하는건 아니지만. 일단은 그것부터 시작하고 db연동되서 호출되는 
+  구조를 만들어 주고, 추후엔 k8s에도 연동되는 deploy를 해야하는 것에 대한 부분을 만들어 달라. 
+- 먼저 길을 보여달라.. 그런 느낌이다. 
+- application 패턴을 웹로직을 사용하면 뭐가 더 좋다.. 모 그런것들이 나옴 좋겠다. 
+- git / jenkins등 소스 배포되고 돌아가는 것들에 대해 데모들도 넣어주면 좋겟다. 
+
+
+
+
+
+# 9월 예제 필요함
+- CI/CD 데모는 넣을거다. 
+- 다음달에 엔지니어들이 소스가 필요.. CI/CD로 바꿔보고 트랜젝션도 발생시켜보고..
+- 다음달 초까지 CI/CD... DB랑 연동이 된다면..
+  엔지니어들이 따라할 수 있는 렙을 같이 핸즈온 해볼수 있는 시간을 만들어 달라. 
+  헬리돈이나 마이크로 서비스등.. java 프로그램으로 짰다. 
+- 교육을 하나 만들어 다랄. DB 연동되는 부분이 필요
+- 이니셔티브 리더들이 그때그때 TF팀이 되는 것 처럼... ... ... 
+
+
+
+- MSA와 상관있는 소스.. 필요 (weblogic, db와 연관된 소스)
+  추후를 위해서도 필요하다. 
+
+
+
+  우리가 어떻게 어프로치를 할 것인지 .. 개발 못함
+- 실제 코딩양이라든지, 실 어플리케이션으로 보여주고 싶었다. 
+  주문서비스라고 하면 배송 서비스 에서 restpull api를 통해 서로 주고 받는 과정을 보고싶었다. 
+  api 기준으로 인터페이스를 만들어야 한다. 
+
+
+
+
+
+## 숙제
+1. TASK3
+- 내 주변의 사물을 선택해서 나의 스토리를 만들어봐라.
+- 길이 3분이내 
+
+TASK1
+- 칸메꾸기 하고 슬랙으로 제출
+- 타켓 스테이지 작성 (내 경험을 도태로 작성)
+- 만나는 사람 누군지 중요함
+- 고객들의 큰 비지니스 관점을 적어라. 
+
+
+TASK2
+- 고객에게 성공사례를 전달해야 한다. 
+- 비니니스 적으로 어떤 도움을 줬었지? 등등 
+
+
+
+
+
+## 젠킨스 배포 파이프라인.. 
+웹로직이 배포되면서 auto-scale 되는것 구현요청
+=> 
+-------------------------------------------
+소스 바뀌는 것 위주로 젠킨스로 과정 
+컨테이너 이미지 바뀌는 것 구현 // docker 컨테이너에서는 weblogic auto-scale 사용 불가
+=> k8s 의 auto-scale 를 사용
+CI/CD 비쥬얼하게 변경 요청
+=> jenkins 사용
 
 
 
@@ -13,8 +142,52 @@
 
 
 
+## spring boot 기동 성공시 깔끔한 로그 
+- port는 8080으로 기동
+
+ .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.0)
+
+2023-08-10T14:40:09.737+09:00  INFO 33744 --- [           main] c.redstack.customer.CustomerApplication  : Starting CustomerApplication using Java 17.0.7 with PID 33744 (C:\Users\junghyle\Oracle Content - 계정\Oracle Content\vscode\customer\target\classes started by junghyle in C:\Users\junghyle\Oracle Content - 계정\Oracle Content\vscode\customer)
+2023-08-10T14:40:09.742+09:00  INFO 33744 --- [           main] c.redstack.customer.CustomerApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-08-10T14:40:10.390+09:00  INFO 33744 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-10T14:40:10.459+09:00  INFO 33744 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57 ms. Found 1 JPA repository interfaces.
+2023-08-10T14:40:11.407+09:00  INFO 33744 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-08-10T14:40:11.420+09:00  INFO 33744 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]        
+2023-08-10T14:40:11.421+09:00  INFO 33744 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2023-08-10T14:40:11.623+09:00  INFO 33744 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-08-10T14:40:11.626+09:00  INFO 33744 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1824 ms
+2023-08-10T14:40:12.054+09:00  INFO 33744 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-10T14:40:12.169+09:00  INFO 33744 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.5.Final
+2023-08-10T14:40:12.487+09:00  WARN 33744 --- [           main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-08-10T14:40:12.713+09:00  INFO 33744 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-10T14:40:12.719+09:00  WARN 33744 --- [           main] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-08-10T14:40:13.603+09:00  INFO 33744 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@f95d64d
+2023-08-10T14:40:13.607+09:00  INFO 33744 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.  
+2023-08-10T14:40:13.634+09:00  INFO 33744 --- [           main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.OracleDialect
+Hibernate: create global temporary table HTE_customer(id number(10,0), email varchar2(255 char), first_name varchar2(255 char), last_name varchar2(255 char), rn_ number(10,0) not null, primary key (rn_)) on commit delete rows
+2023-08-10T14:40:16.109+09:00  INFO 33744 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-10T14:40:16.121+09:00  INFO 33744 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-10T14:40:16.493+09:00  WARN 33744 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-10T14:40:16.978+09:00  INFO 33744 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-10T14:40:16.990+09:00  INFO 33744 --- [           main] c.redstack.customer.CustomerApplication  : Started CustomerApplication in 7.651 seconds (process running for 8.244)
 
 
 
+# curl로 DATA 내용 추가 
+$ curl -i \
+   -X POST \
+   -H 'Content-Type: application/json' \
+   -d '{"firstName": "Mark", "lastName": "Nelson", "email": "mark@some.com"}' \
+    http://localhost:8080/api/v1/customers
 
 
+curl -i -X POST -H 'Content-Type: application/json' -d '{"firstName": "Mark", "lastName": "Nelson", "email": "mark@some.com"}' http://localhost:8080/api/v1/customers
+
+
+TPMC 

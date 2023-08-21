@@ -1,0 +1,50 @@
+https://redstack.wordpress.com/2023/02/03/a-first-spring-boot-microservice-with-oracle/
+실행방법 정리
+
+# 도커를 활용 DB 설치 및 시작
+opc 로그인 후 아래 명령어 수행
+
+docker run -d \
+   --name oracle-db \
+   -p 1521:1521 \
+   -e ORACLE_PWD=Welcome123 \
+   -e ORACLE_SID=ORCL \
+   -e ORACLE_PDB=PDB1 \
+   container-registry.oracle.com/database/enterprise:21.3.0.0
+
+# 도커 Oracle DB log 확인
+docker logs -f oracle-db
+
+# 도커 Oracle DB 시작/중지 방법
+docker stop oracle-db
+docker start oracle-db
+
+
+# 도커 DB IP주소 가져오는 방법
+docker inspect oracle-db | grep IPAddress
+
+
+# 도커 내부 sqlplus에서 접속
+docker exec -it oracle-db sqlplus / as sysdba
+docker exec -it oracle-db sqlplus sys/Welcome123@pdb1 as sysdba
+
+
+
+## 도커 외부 윈도우에서 SQLcl 활용 OracleDB접속
+SQLcl실행 후 아래 명령어로 접속
+sys/Welcome123@//130.162.157.133:1521/pdb1 as sysdba
+customer/Welcome123@//130.162.157.133:1521/pdb1
+
+
+
+# sys, Welcome123 재정의
+아래 명령어로 내부 접속후 sys/Welcome123 재 정의 필요
+alter user 계정명 identified by 변경할 비밀번호; 
+ex) alter user sys identified by Welcome123; 
+
+
+# 윈도우 CMD에서 curl 호출
+- postman 활용도 가능
+curl -i -X POST -H "Content-Type: application/json" -d "{\"firstName\": \"Mark\", \"lastName\": \"Nelson\", \"email\": \"mark@some.com\"}" http://localhost:8080/api/v1/customers
+
+

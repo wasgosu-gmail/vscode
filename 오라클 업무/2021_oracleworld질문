@@ -1,0 +1,65 @@
+
+Oracle Database 21c를 통한 클라우드 네이티브 Java 앱 개발
+
+- 설명
+Eclipse 또는 IntelliJ 플러그인 구성, 인기 마이크로서비스 프레임워크에서 JDBC(JJava Database Connectivity) 드라이버 설치, 메모리에서 월렛 로드, 가상 스레드 사용, Reactive Extensions 사용 및 GraalVM 네이티브 이미지를 이용해 JDBC를 설정하는 방법을 알아보세요.
+
+# develop cloud native java apps with oracle database
+
+# 아젠다
+1. quickstart a java application with the autonomous database
+(자율 데이터베이스로 Java 애플리케이션을 빠르게 시작)
+
+2. Initialize a springboot application with Oracle JDBC aand UCP
+(Oracle JDBC 및 UCP로 스프링 부트 애플리케이션 초기화)
+
+3. provision an autonomous trasaction processing database
+(자율 트랜잭션 처리 데이터베이스 프로비저닝)
+- 쿠버네티스 ATP를 지원한다. oci, linux에서만 지원
+
+4. connect to an autonomous trasaction processing database
+(자율 트랜잭션 처리 데이터베이스에 연결)
+- 이클립스 디비연결 데모영상 시청
+
+
+5. scale java database access : Reactive streams or virtual threads
+(스케일 자바 데이터베이스 액세스 : 반응 스트림 또는 가상 스레드)
+
+6. speed up java datavase access with graalvm native image
+(graalvm 기본 이미지로 Java 데이터베이스 액세스 속도 향상)
+
+
+7. Java Applications Development with the Oracle Datavase : the Summary
+(Oracle Database를 사용한 Java 애플리케이션 개발: 요약)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

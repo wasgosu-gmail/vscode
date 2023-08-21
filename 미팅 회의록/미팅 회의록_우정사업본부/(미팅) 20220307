@@ -1,0 +1,55 @@
+
+우정사업본부 미팅 회의록 
+
+금일 회의에서 안건은 3개가 거론되었습니다. 
+WebTier TLS1.3버전 지원과 Docker Image weblogic 기술지원이 나왔으며, OpenShift 환경에서 운영중인 Docker Image Weblogic에서 환경변수를 사용할 수 있는지 3가지 안건이 거론되었고, 그에 따른 회의록을 작성하여 공유드립니다. 
+
+
+### 회의안건
+# 안건-1
+WebTier TLS1.3 지원 논의
+WebTier에서는 TLS 1.3을 지원 안하는지 문의를 주셨고 그에 대해 답변은 아래와 같습니다.
+
+답변
+-  WebTier 12cR2 버전이 최신버전이지만, Apache 2.4 기반으로 생성된거라 TLS1.3 버전을 지원하는 Apache 2.4.37 버전이 지원되지 않아서 TLS1.3 지원은 안된다고 답변함.
+- 오픈소스 WEB(Apache, Nginx) 사용을 권고드렸으나, 보안상 이유와 책임 소재 부분으로 인해 상용 S/W인 WebTier를 고려중이라 하심.
+- Weblogic 에서는 TLS1.3 이 지원되니 WebTier 대신 Weblogic 을 사용하시길 권고드렸으나, 내부 보안상 이슈로 DMZ(Public존)에서 Web Proxy를 사용하는 구조라 Weblogic 을 WEB(Webtier)에 둘 수 는 없다 답변함.
+- WebTier 신버전 출시문의와 추후에 버전 업 되면 지원 가능한지 문의가 들어왔으나 현 시점에 확실하게 답해드릴 수 없는 부분이 있어 어렵다 답변함.
+
+고객요구
+- Oracle WebTier에서 TLS 1.3 을 지원하지 않는다는 공식 공문을 요청
+
+
+# 안건-2
+Docker Image 에서 Weblogic을 제공해주는 것에 대해 유지보수과 기술지원이 가능한지 문의
+
+답변
+- Oracle 에서 Docker Image를 제공해드리는 것은 맞지만, 공식적으로는 각 사이트별 상황에 맞게 Docker Image Tool을 이용해서 직접 이미지를 빌드해서 사용하는 것을 권고한다 전달 해드림. 
+- Docker Image Weblogic 의 기술지원이 가능한지 문의주셨고, 아래와 같이 답변함 
+Docker 안에 있는 Weblogic 은 기술지원이 가능하나, Docker image weblogic은 기술지원 대상이 아니지 않을까 언급은 드렸고, 확인 후 추후 전달하는 것으로 마무리 
+
+고객요구
+- Oracle Image Weblogic -pass형태로 제공되는 image 도 ULA 지원번위에 속하는지, 유지보수는 지원 되는지 문의하고 안되면 공식 공문을 요청
+
+
+# 안건-3
+OpenShift 안에 Docker Image Weblogic을 사용중인데, 원하는 환경변수를 외부에서 직접 입력하고 싶어하는데, 기술적으로 Weblogic 이 Docker 환경변수를 지원하는지 문의함.
+
+답변
+- 2/24일 SK이동희부장에게 전달드렸던 방법중 1번 방법에 대해 설명드렸으며, 설치 진행 해보셨나 물었으나 메일 확인을 안한것으로 확인.
+- 고객이 원하는 환경변수(DB connection 연결, Java 환경변수, Application deploy, Batch환경변수 변경)은 오라클에서 제공해주지 않는다 답변
+단, Oracle WebLogic Kubernetes Operator를 제공해주는데 거기에 나와있는 환경변수는 제공된다 전달해드림.
+- 최초 Oracle WebLogic Kubernetes Operator  가이드는 2021-03월 Oracle에서 전달해줬다는 부분 언급 해드림.
+- Oracle WebLogic Kubernetes Operator 가이드를 우선 확인해보고 가이드에서 제공되는 환경변수면 가능한지 문의를 드렸고, 그 가이드에 나와있는 환경변수를 사용할 수 있는지 테스트 해보자 고객이 요구하심.
+- Oracle WebLogic Kubernetes Operator 설치 가이드는 3/8(화) 오전중 한번 더 전달해드리기로 하였고, 3/10 전에 RedHat Openshift 엔지니어가 설치 가능한지 확인 후 진행하기로 함. 
+
+
+고객요구
+- Oracle WebLogic Kubernetes Operator 에 대해 원하는 환경변수(DB Connection 연결)이 없지만, java 옵션, Application deploy등 일부 지원되는 옵션이 있어 거기에 맞게 테스트를 진행해보자 요청하심.
+- 3/10~3/11 (목,금) 이틀간 가산디지털 단지에서 셋팅 테스트를 해보자 요구하심. 
+- Oracle WebLogic Kubernetes Operator 는 오라클에서 제공해주는 것이 맞지만, RedHat OpenShift 설치 가이드가 아니다 보니 설치는 openshift 엔지니어가 지원해줘야 하며, Docker Image weblogic 올리고 환경변수 구성 테스트는 SK에서 지원해야 한다고 전달해드렸음. 
+Oracle WebLogic Kubernetes Operator 가 openshift 용이 아니라는 것에는 고객도 동의했고, 할 수 있는데 까지 진행해보자 강력히 요구하셔서 목,금은 Oracle 지원이 필요할 듯 함.
+
+
+
+

@@ -77,10 +77,6 @@ Which two are possible reasons for the connectivity issue? (Choose two.)
 #B. There is no stateful egress rule in the security list associated with the public subnet.
 
 
-14. You are designing a lab exercise with an application that includes a large number of graphics with large file sizes. The application becomes unresponsive if the graphics are embedded in the application. You have uploaded the graphics to Oracle Cloud Infrastructure Object Storage bucket and added the URL paths for the individual objects in the application. You need to ensure these graphics are accessible without requiring any authentication for an extended period of time.
-How can you achieve these requirements?
-#B. Make the Object Storage bucket private, make all objects public, and use the URL found in the object "Details".
-
 
 15. You have setup your environment as shown below with the Mount Target "MT" successfully mounted on both compute instances CLIENT-X and CLIENT-Y.
 For security reasons you want to control the access to the File System A in such a way that CLIENT-X has READ/WRITE and CLIENT-Y has READ only permission.
@@ -98,10 +94,6 @@ You have been notified of an application failure indicating that one or more of 
 What should you do to identify the reason for this missing resource?
 b. Navigate to the Audit console and search the previous 24 hours for all DELETE request actions to get a list of any resource that was deleted in the past 24 hours.
 
-
-
-17. Which statement is NOT true about the Oracle Cloud Infrastructure Object Storage service?
-#B. Immutable option for data stored in the Object Storage can be set via retention rules.
 
 
 18. You are about to upload a large log file (5 TIB size) to Oracle Cloud Infrastructure object storage and have decided to use multipart upload capability for a more efficient and resilient upload.
@@ -158,13 +150,6 @@ Which two steps should you take to ensure that the Object Storage bucket used in
 26. Which two resources reside exclusively in a single Oracle Cloud Infrastructure Availability Domain? (Choose two.)
 #D. Block volume
 #E. Compute instance
-
-
-
-
-
-
-
 
 
 
@@ -242,8 +227,10 @@ Which two methods would make the new image available for you to use when deployi
 
 39. Which three must be configured for a load balancer to accept incoming traffic? (Choose two.)
 #A. a listener
-#B. a back-end server
-#C. a back end set
+#D. a security list that is open on a listener port
+- 만약 답 3개 요구시에는 아래 추가
+#backend set with at least one backend server 
+
 
 
 40. Which two options are true for Autonomous Transaction Processing (ATP) database? (Choose two.)
@@ -531,7 +518,6 @@ A. bare metal DB systems
 
 
 Which statement is NOT true about the Oracle Cloud Infrastructure Object Storage service?
-a. Immutable option for data stored in the Object Storage can be set via retention rules.
 #Object versioning is enabled at the namespace level.
 
 
@@ -570,13 +556,6 @@ a. Immutable option for data stored in the Object Storage can be set via retenti
 The storage volumes include boot volumes and block volumes for your data storage. You need to create backups of these storage volumes in the most time-efficient manner.
 How can you meet this requirement?
 #D. Group together multiple storage volumes in a volume group and create volume group backups.
-
-
-
-Which two statements about Oracle Cloud Infrastructure Fault Domains are true?
-#B. A Fault Domain is a grouping of hardware and infrastructure within an Availability Domain.
-#D. Each Availability Domain contains at least three Fault Domains.
-
 
 
 
@@ -712,11 +691,6 @@ What could be the possible reason for this behavior?
 #F. data source
 
 
-127. Which statement is true about the Oracle Cloud Infrastructure File Storage Service Mount
-Target?
-D. You can access multiple file systems through a single mount target
-
-
 128. You provisioned an Oracle Autonomous Data Warehouse (ADW) on Oracle Cloud Infrastructure
 (OCI) and imported data into ADW
 #C. Grant unlimited tablespace privilege to the database user.
@@ -744,7 +718,6 @@ what does the oci dns contains
 #lable
 
 
-
 3. Which statement is TRUE about delegating an existing domain to Oracle Cloud Infrastructure (OCI) DNS service?
 #Domains can be delegated to OCI DNS from the Domain Registrar's self-service portal.
 
@@ -761,20 +734,6 @@ what does the oci dns contains
 #NAT Gateway
 
 
-6. You created a virtual cloud network (VCN) with three private subnets. Two of the subnets contain application servers and the third subnet contains a DB System. The application requires a shared file system so you have provisioned one using the file storage service (FSS).
-You also created the corresponding mount target in one of the application subnets. The VCN security lists are
-properly configured so that both application servers and the DB system can access the file system. The
-security team determines that the DB System should have read-only access to the file system.
-What change should you make to satisfy this requirement?
-#Create an NFS export option that allows READ ONLY access where the source is the CIDR range of the DB System subnet.
-
-
-7. You have setup your environment as shown below with the Mount Target "MT" successfully mounted on both compute instances CLIENT-X and CLIENT-Y.
-For security reasons you want to control the access to the File System A in such a way that CLIENT-X has READ/WRITE and CLIENT-Y has READ only permission.
-What you should do?
-#Update the mount target export options to restrict CLIENT-Y access to read-only.
-
-
 
 You have multiple applications installed on a compute instance and these applications generate a large amount of log files. These log files must reside on the boot volume for a minimum of 15 days.
 Any log files age over 15 days shouldn’t be on boot volume but still must be retained for at least 60 days. The 60-day retention requirement is causing an issue with available disk space.
@@ -784,25 +743,16 @@ What are two Oracle recommended methods to retain the log files for 60 days with
 
 
 
-
 You have to setup your environment as shown below with the Mount Target “MT” successfully mounted on both compute instances CLIENT-X and CLIENT-Y.
 For security reasons, you want to control the access to the File System A in such a way that CLIENT-X has READ/WRITE and CLIENT-Y has READ only permission.
 What you should do?
 #d. Update the mount target export options to restrict CLIENT-Y access to read only.
 
 
-
-8. Which two statements about Oracle Cloud Infrastructure File Storage Service are accurate? 
-(정답 모두 선택)
-#Customer can encrypt data in their file system using their own Vault encryption key.
-#File systems use Oracle-managed keys by default.
-
-
 9. Which THREE protocols are supported by the Oracle Cloud Infrastructure Network Load Balancer? 
 (정답 모두 선택)
 #UDP
 #TCP
-
 
 10. As a database administrator, you want to make sure the database is well-tuned and be able to determine when and why the database is not performing at its optimum level.
 What is the minimum database edition that will provide you with this functionality?
@@ -857,8 +807,8 @@ Which two options allow you to get your required performance for your applicatio
 #Terminate the compute instance preserving the boot volume. Create a new compute instance using the VM.GPU3.4 shape using the boot volume preserved and use the NVMe devices to host your application. 
 
 
-19. You have an AI/ML application running on Oracle Cloud Infrastructure. You identified that the application needs GPU and at least 20 Gbps of network throughput.
-The application is currently using a VM.Stardard2.1 compute instance with no attached block volumes.
+19. You have an AI/ML application running on Oracle Cloud Infrastructure. You identified that the application needs GPU and at least 20Gbps of network throughput.
+The application is currently using a VM.Standard2.1 compute instance with no attached block volumes.
 Which two options allow you to meet the requirements for your application?
 (정답 모두 선택)
 #Terminate the compute instance preserving the boot volume. Create a new compute instance using the VM.GPU3.4 shape using the preserved boot volume.
@@ -1065,11 +1015,6 @@ What would you do ensure the users access to the apps compartment?
 #Compartments (*) 
 #Cost-tracking tags (*) 
 
-1. Which three must be configured for a load balancer to accept incoming traffic? (Choose three)
-(Choose all correct answers)
-#A listener (*) 
-#A security list that is open on the listener port (*) 
-#A backend set with at least one backend server (*)
 
 
 2. Which two types of topologies are provided by network visualizer? (Choose two)
@@ -1323,19 +1268,9 @@ How can you achieve these requirements?
 #Make the Object Storage bucket public and use the URL path for the individual objects.
 
 
-56. As a solution architect, you are showcasing the Oracle Cloud Infrastructure (OCI) Object Storage feature about Object Versioning to a customer.
-Which statement is true in regards to OCI Object Storage Versioning?
-#By default, object versioning is disabled on a bucket.
-
 
 57. Which statement is NOT true about the Oracle Cloud Infrastructure Object Storage service?
 #Object versioning is enabled at namespace level.
-
-
-58. A financial firm is designing an application architecture for its online trading platform that must have high availability and fault tolerance.
-Their solutions architect configured the application to use an Oracle Cloud Infrastructure Object Storage bucket located in the US West (us-phoenix-1) region to store large amounts of financial data. The stored financial data in the bucket must not be affected even if there is an outage in one of the Availability Domains or a complete region.
-What should the architect do to avoid any costly service disruptions and ensure data durability?
-#Create a replication policy to send data to a different bucket in another OCI region.
 
 
 59. Which TWO statements are TRUE about Public IP addresses in Oracle Cloud Infrastructure (OCI)? (정답 모두 선택)
@@ -1345,3 +1280,50 @@ What should the architect do to avoid any costly service disruptions and ensure 
 
 60. Which TWO statements are TRUE about Private IP addresses in Oracle Cloud Infrastructure? (정답 모두 선택)
 #By default, the primary VNIC of an instance in a subnet has one primary private IP address and one secondary private IP address.
+
+
+
+###### 검토필요
+(시험문제 출시 - 검토필요)
+58. You want to limit access for a specific database admin group named ADB-Admin to only manage backups of Autonomous Data Warehouse.
+Which policy statement should you create to meet this requirement?
+Allow group ADB-Admin to manage autonomous-backup in tenancy
+O Allow group ADB-Admin to manage autonomous-database in tenancy where target workioadType - DN 
+AUD
+Allow group ADB-Admin to manage autonomous-backup in tenancy where target workloadType
+DW'
+Allow group ADB-Admin to manage autonomous-backup in tenancy where target.workioadType
+
+
+
+Which TWO statements are TRUE about Public IP addresses in Oracle Cloud Infrastructure (OCI)?
+You can assign a given instance multiple public IPs across one or more VNICS.
+Public IP addresses can be ephemeral or reserved.
+You must use OCI provided public IP addresses. You cannot bring your own IP addresses to oci.
+# By default, an instance in a public subnet has one primary public IP address.
+
+
+
+33. What feature in Oracle Cloud Infrastructure MySQL Database Service provides a distributed, scalable, shared-nothing, in-memory, query processing engine designed for fast execution of analytic queries?
+# Heat Wave
+HeatComputing
+HeatQuery
+Heat Execute
+
+
+
+Why would you use a Multi-Region Table in Oracle NoSQL Database Cloud Service?
+To have a table with the same name in more than one region but with different contents
+To have a table with the same name but based on the key value will determine which KvStore duster in which region the data will be stored
+To have a table with the same name maintaining consistent data across the multiple kvStore clusters
+To have a table with the same name across the multiple kystore clusters just for instantiation
+
+
+You are designing a lab exercise with an application that includes a large number of graphics with large
+file sizes. The application becomes unresponsive if the graphics are embedded in the application.
+You have uploaded the graphics to Oracle Cloud Infrastructure Object Storage bucket and added the URL paths for the individual objects in the application. You need to ensure these graphics are accessible without requiring any authentication for an extended period of time.
+How can you achieve these requirements?
+Make the Object Storage bucket private, make all objects public, and use the URL found in the object Details".
+Create pre-authenticated requests (PAR) and do not specify any expiration time.
+Make the Object Storage bucket public and use the URL path for the individual objects.
+# Create pre-authenticated requests (PAR) and specify 00:00:0000 as the expiration time.

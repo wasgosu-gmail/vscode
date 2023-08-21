@@ -1,0 +1,49 @@
+
+미팅 날짜 : 3/10 
+미팅 시간 : 10:00 ~ 
+
+가산디지털 서울사무소 방문 목적은 3/7(월) 나주 회의에서 나온 안건 중 Oracle WebLogic Kubernetes Operator 환경변수 제공 설치 테스트 요건으로 방문하였습니다. 
+
+
+## SK 요청사항
+-	Docker Image 구동시 Image는 한 개만 사용하고Weblogic 환경변수를 외부에서 입력하여(dev,prd,stg)등 환경구성 값을 변경하여 운영하길 원함
+
+
+## 사전 답변
+-	Docker Image Weblogic에 제공되는 환경변수는 별도로 없고, Oracle WebLogic Kubernetes Operator 를 설치하면 일부 환경변수 값을 사용할 수 있음을 사전 미팅에서 전달해드린 상태 (최초 전달은 2021년03월임)
+-	Operator 기능은 Kubernetes에서 제공되는 기능이며, OpenShift에서 제공되는 기능은 아님을 상기시켜드렸고, 원하는 환경변수값을 사용 할 수 없을 수 있다는 점도 사전 미팅에서 전달해드림
+
+
+## OpenShift 콘솔 접속 후 확인된 사항
+-	Application OpenAPI로 환경변수 사용 중
+환경변수를 Weblogic 이 아닌 Application 환경변수를 사용하면 원하는 결과값은 제공 되는 형태로 사용 중이 였고, 그 부분에 대해 알려 드림.
+Openshift config map에서 사용중인 환경변수 값이 Application 에서 구현된 부분이라 APP종속성이 우려되여, Weblogic 에서 직접 환경변수를 사용 할 수 있도록 변수 값을 설정 해주기를 요구 함
+
+
+
+## 3/10 작업내용
+-	OS 변경 작업 (Oracle Linux -> RedHat Linux)
+OS는 Oracle linux를 사용하는 것이 아니라 RedHat Linux를 사용하는 것으로 당일 통보 받아 Docker Image 에 변경된 OS 설치 작업
+
+-	Weblogic Slim & JAVA-1.8.0.231 신규 설치
+OS변경으로 기존 Docker Image는 사용할 수 없으므로 신규 RedHat Linux로 weblogic slim, java-1.8.0.231 version 설치 구성
+
+-	OS 변경으로 Kubernetes Operator 사용 불가
+원래목적인 Oracle WebLogic Kubernetes Operator는 Oracle linux 로 구성되있는 환경에 설치 가능한 Operator라서 처음 계획대로 환경변수 값을 사용할 수 없음을 SK에 알려드림
+
+-	WLST (WebLogic Scripting Tools) 스크립트로 환경변수 호출 샘플 구성
+OS 변경으로 Kubernetes Operator를 사용 할 수 없는 환경이 됨.
+WLST 스크립트를 활용하여 Weblogic 환경변수값을 설정 할 수 있을지 테스트 진행
+RedHat 엔지니어와 WLST활용 Python 개발 샘플을 두 개 생성하여 SK 에 전달해드림
+-	WLST로 구현된 샘플 전달 (Deploy, DB Connection Pool) 
+SK 이동희부장에게 샘플 전달하고 추가로 필요한 환경변수는 해당 샘플을 참고해서 SI에서 직접 작성하길 권고
+
+
+## Oracle 과 RedHat이 찾은 WLST(python) 방식을 활용하여 추가 구현하기 위해서는 추가 인력도 필요하고 단기간엔 어렵다는 의견을 전달 
+WLST 구현시 추가인력 필요 (Python개발자, Weblogic 엔지니어, Docker Image 생성자, OpenShift 엔지니어) 
+?	RedHat 담당자와 Oracle (이정현부장)에게 추가 구현을 해달라고 요청하셔서 그건 개발 SI영역이므로 SK에서 인력확보하여 진행하시기를 권고 함.
+?	Oracle 에서 제공되는 Kubernetes Operator 구현이 안되 다른 방안을 구성 중 WLST를 활용한 방법이라 유지보수 및 기술지원이 어려울 수 있다 전달해드리고 다른 방안도 고려해보시길 권고 함.
+?	해당 내용을 SK내부에서 검토 예정
+
+
+
